@@ -1,8 +1,10 @@
 import React from 'react';
+import 'swiper/css/swiper.css';
 import './App.css';
 import styled from 'styled-components';
 import smoothscroll from 'smoothscroll-polyfill';
 import { isUndefined } from 'lodash';
+import { isMobile } from 'react-device-detect';
 
 import Experience from 'apps/Experience';
 import Projects from 'apps/Projects';
@@ -18,6 +20,7 @@ interface State {
     startMobilePos: number;
     isTransitioning: boolean;
     currentPage: number;
+    isCardSelected: boolean;
 }
 
 class App extends React.Component<{}, State> {
@@ -39,6 +42,7 @@ class App extends React.Component<{}, State> {
         startMobilePos: 0,
         isTransitioning: false,
         currentPage: 0,
+        isCardSelected: false,
     };
     pages = ['experience', 'projects', 'blog', 'contact', 'extra'];
 
@@ -51,6 +55,8 @@ class App extends React.Component<{}, State> {
         }
     };
 
+    handleCardToggle = (isCardSelected: boolean) => this.setState({ isCardSelected });
+
     handleWheelScroll = (e: WheelEvent) => {
         const isScrollingUp = e.deltaY < 0;
         isScrollingUp ? this.handleScroll('up') : this.handleScroll('down');
@@ -59,21 +65,25 @@ class App extends React.Component<{}, State> {
     handleTouchStart = (e: TouchEvent) => this.setState({ startMobilePos: e.touches[0].clientY });
 
     handleTouchMove = (e: TouchEvent) => {
+        const { startMobilePos, isCardSelected } = this.state;
+        if (isCardSelected) return;
         e.preventDefault();
-        const { startMobilePos } = this.state;
 
         const currMobilePos = e.touches[0].clientY;
-        const isScrollingUp = startMobilePos - currMobilePos < 0;
-        isScrollingUp ? this.handleScroll('up', true) : this.handleScroll('down', true);
+        if (startMobilePos - currMobilePos < -100) {
+            this.handleScroll('up');
+        } else if (startMobilePos - currMobilePos > 100) {
+            this.handleScroll('down');
+        }
     };
 
-    handleScroll = (direction: 'up' | 'down', isMobile: boolean = false) => {
-        let { currentPage, isTransitioning } = this.state;
-        if (isTransitioning) {
+    handleScroll = (direction: 'up' | 'down') => {
+        let { currentPage, isTransitioning, isCardSelected } = this.state;
+        if (isTransitioning || isCardSelected) {
             return;
         } else {
             this.setState({ isTransitioning: true });
-            setTimeout(() => this.setState({ isTransitioning: false }), 500);
+            setTimeout(() => this.setState({ isTransitioning: false }), 1000);
         }
 
         if (
@@ -103,11 +113,11 @@ class App extends React.Component<{}, State> {
     render() {
         return (
             <Wrapper id="parent-wrapper">
-                <Experience />
-                <Projects />
-                <Blog />
-                <Contact />
-                <Extra />
+                <Experience onCardToggle={this.handleCardToggle} />
+                <Projects onCardToggle={this.handleCardToggle} />
+                <Blog onCardToggle={this.handleCardToggle} />
+                <Contact onCardToggle={this.handleCardToggle} />
+                <Extra onCardToggle={this.handleCardToggle} />
             </Wrapper>
         );
     }
