@@ -7,8 +7,9 @@ const Wrapper = styled(motion.div)<{ show: boolean }>`
     background-color: black;
     opacity: ${(props) => (props.show ? 0 : 1)};
 
-    width: 45vh;
-    height: 75vh;
+    width: 36vh;
+    height: 60vh;
+    margin-top: 2em;
 `;
 
 export interface CardObject {

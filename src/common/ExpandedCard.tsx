@@ -76,7 +76,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                 <Wrapper>
                     <ContentWrapper>
                         <InnerWrapper
-                            initial={{ top, height: '75vh', width: '45vh', scale: 1 }}
+                            initial={{ top, height: '60vh', width: '36vh', scale: 1 }}
                             animate={{
                                 top: 0,
                                 height: '100vh',
@@ -86,14 +86,14 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                             }}
                             exit={{
                                 top,
-                                height: '75vh',
-                                width: '45vh',
+                                height: '60vh',
+                                width: '36vh',
                                 scale: 1,
                                 transition: { duration: 0.6 },
                             }}
                         >
                             <ImageContent
-                                initial={{ top, height: '75vh', borderRadius: '1em' }}
+                                initial={{ top, height: '60vh', borderRadius: '1em' }}
                                 animate={{
                                     top: 0,
                                     height: '20vh',
@@ -102,7 +102,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                                 }}
                                 exit={{
                                     top,
-                                    height: '75vh',
+                                    height: '60vh',
                                     borderRadius: '1em',
                                     transition: { duration: 0.6 },
                                 }}

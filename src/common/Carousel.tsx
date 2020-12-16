@@ -13,6 +13,7 @@ const Wrapper = styled.div`
     position: relative;
     display: flex;
     justify-content: center;
+    margin-bottom: 5em;
 `;
 
 interface Props {
