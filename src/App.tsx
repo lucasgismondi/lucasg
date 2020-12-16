@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import smoothscroll from 'smoothscroll-polyfill';
 import { isUndefined } from 'lodash';
 import { isMobile } from 'react-device-detect';
+import { motion } from 'framer-motion';
 
 import Experience from 'apps/Experience';
 import Projects from 'apps/Projects';
@@ -14,13 +15,18 @@ import Extra from 'apps/Extra';
 
 smoothscroll.polyfill();
 
-const Wrapper = styled.div``;
+const Wrapper = styled(motion.div)`
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+`;
 
 interface State {
     startMobilePos: number;
     isTransitioning: boolean;
     currentPage: number;
     isCardSelected: boolean;
+    top: number;
 }
 
 class App extends React.Component<{}, State> {
@@ -43,6 +49,7 @@ class App extends React.Component<{}, State> {
         isTransitioning: false,
         currentPage: 0,
         isCardSelected: false,
+        top: 0,
     };
     pages = ['experience', 'projects', 'blog', 'contact', 'extra'];
 
@@ -83,7 +90,7 @@ class App extends React.Component<{}, State> {
             return;
         } else {
             this.setState({ isTransitioning: true });
-            setTimeout(() => this.setState({ isTransitioning: false }), 1000);
+            setTimeout(() => this.setState({ isTransitioning: false }), 500);
         }
 
         if (
@@ -111,8 +118,10 @@ class App extends React.Component<{}, State> {
     };
 
     render() {
+        const { top } = this.state;
+
         return (
-            <Wrapper id="parent-wrapper">
+            <Wrapper id="parent-wrapper" initial={{ top }} animate={{ top, transition: { duration: 0.75 } }}>
                 <Experience onCardToggle={this.handleCardToggle} />
                 <Projects onCardToggle={this.handleCardToggle} />
                 <Blog onCardToggle={this.handleCardToggle} />
