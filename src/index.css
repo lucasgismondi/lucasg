@@ -12,6 +12,13 @@ body {
     overflow-y: hidden;
     color: white;
 }
+::-moz-selection {
+    /* Code for Firefox */
+    background: #0075FF;
+}
+::selection {
+    background: #0075FF;
+}
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;

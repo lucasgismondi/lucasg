@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -20,7 +20,7 @@ const Background = styled(motion.div)`
     background-color: ${(props) => props.theme.background};
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.div<{ isClosing: boolean }>`
     position: absolute;
     z-index: 100;
     height: 100vh;
@@ -29,7 +29,7 @@ const ContentWrapper = styled.div`
     display: flex;
     justify-content: center;
 
-    overflow-y: scroll;
+    overflow-y: ${(props) => (props.isClosing ? 'hidden' : 'scroll')};
     -webkit-overflow-scrolling: scroll; /* iOS Safari */
 
     /* Hide scrollbar for Chrome, Safari and Opera */
@@ -44,6 +44,30 @@ const ContentWrapper = styled.div`
 const InnerWrapper = styled(motion.div)`
     position: absolute;
     max-width: 100vw;
+`;
+
+const ExitButtonWrapper = styled(motion.div)`
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    width: ${CONTENT_WIDTH};
+    max-width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+`;
+
+const ExitButton = styled(motion.button)`
+    border: none;
+    background-color: grey;
+    border-radius: 50%;
+    height: 3em;
+    width: 3em;
+    opacity: 0.75;
+    margin: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 `;
 
 const ImageContent = styled(motion.div)`
@@ -66,26 +90,50 @@ const TextContent = styled(motion.div)`
 interface Props {
     searchID: string;
     cardObject: CardObject;
-    onClose: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    onClose: () => void;
     onExitComplete: () => void;
     show: boolean;
 }
 
 const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitComplete, show }) => {
-    let top: number | undefined = 0;
+    let initialTop: number = 0;
+    const [exitTop, setExitTop] = useState<number>(0);
+    const [isClosing, setIsClosing] = useState(false);
+
     if (show) {
         const element = document.getElementById(searchID);
-        if (element) top = element.getBoundingClientRect().top;
+        if (element) initialTop = element.getBoundingClientRect().top;
     }
+
+    const handleClose = async () => {
+        const element = document.getElementById('expanded-card-content');
+        if (element) await setExitTop(initialTop - element.getBoundingClientRect().top);
+        await setIsClosing(true);
+        onClose();
+        setIsClosing(false);
+    };
 
     const { image, imageAlt } = cardObject;
     return (
         <AnimatePresence onExitComplete={onExitComplete}>
             {show && (
                 <Wrapper>
-                    <ContentWrapper>
+                    <ContentWrapper isClosing={isClosing}>
+                        <ExitButtonWrapper>
+                            <ExitButton
+                                onClick={handleClose}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1, transition: { delay: 0.5, duration: ENTER_DURATION } }}
+                                exit={{ opacity: 0, transition: { duration: 0.3 } }}
+                            >
+                                X
+                            </ExitButton>
+                        </ExitButtonWrapper>
                         <InnerWrapper
-                            initial={{ top, height: CARD_HEIGHT, width: CARD_WIDTH, scale: 1 }}
+                            id="expanded-card-content"
+                            initial={{ top: initialTop, height: CARD_HEIGHT, width: CARD_WIDTH, scale: 1 }}
                             animate={{
                                 top: 0,
                                 height: '100vh',
@@ -94,7 +142,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                                 transition: { duration: ENTER_DURATION },
                             }}
                             exit={{
-                                top,
+                                top: exitTop,
                                 height: CARD_HEIGHT,
                                 width: CARD_WIDTH,
                                 scale: 1,
@@ -102,7 +150,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                             }}
                         >
                             <ImageContent
-                                initial={{ top, height: CARD_HEIGHT, borderRadius: '1em' }}
+                                initial={{ top: initialTop, height: CARD_HEIGHT, borderRadius: '1em' }}
                                 animate={{
                                     top: 0,
                                     height: '20vh',
@@ -110,7 +158,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                                     transition: { duration: ENTER_DURATION },
                                 }}
                                 exit={{
-                                    top,
+                                    top: exitTop,
                                     height: CARD_HEIGHT,
                                     borderRadius: '1em',
                                     transition: { duration: EXIT_DURATION },
@@ -122,9 +170,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1, transition: { duration: ENTER_DURATION } }}
                                 exit={{ opacity: 0, transition: { duration: EXIT_DURATION } }}
-                            >
-                                <button onClick={onClose}>close</button>
-                            </TextContent>
+                            />
                         </InnerWrapper>
                     </ContentWrapper>
                     <Background
