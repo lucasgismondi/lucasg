@@ -100,7 +100,7 @@ class Carousel extends React.Component<Props, State> {
             <Wrapper>
                 <ExpandedCard
                     searchID={`${id}${selectedIndex}`}
-                    cardObject={isNull(selectedIndex) ? null : cards[selectedIndex]}
+                    cardObject={isNull(selectedIndex) ? cards[0] : cards[selectedIndex]}
                     onClose={this.handleClose}
                     onExitComplete={this.handleExitComplete}
                     show={isCardExpanded}

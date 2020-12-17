@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { CardObject } from './Card';
+import { CARD_HEIGHT, CARD_WIDTH, CONTENT_WIDTH, ENTER_DURATION, EXIT_DURATION } from '../constants';
 
 const Wrapper = styled.div`
     position: fixed;
@@ -46,18 +47,25 @@ const InnerWrapper = styled(motion.div)`
 `;
 
 const ImageContent = styled(motion.div)`
-    background-color: black;
     width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+`;
+
+const StyledImage = styled(motion.img)`
+    width: 80vh;
 `;
 
 const TextContent = styled(motion.div)`
     height: 100vh;
-    background-color: red;
 `;
 
 interface Props {
     searchID: string;
-    cardObject: CardObject | null;
+    cardObject: CardObject;
     onClose: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     onExitComplete: () => void;
     show: boolean;
@@ -70,58 +78,59 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
         if (element) top = element.getBoundingClientRect().top;
     }
 
+    const { image, imageAlt } = cardObject;
     return (
         <AnimatePresence onExitComplete={onExitComplete}>
             {show && (
                 <Wrapper>
                     <ContentWrapper>
                         <InnerWrapper
-                            initial={{ top, height: '60vh', width: '36vh', scale: 1 }}
+                            initial={{ top, height: CARD_HEIGHT, width: CARD_WIDTH, scale: 1 }}
                             animate={{
                                 top: 0,
                                 height: '100vh',
-                                width: '80vh',
+                                width: CONTENT_WIDTH,
                                 scale: [1, 0.9, 1, 1, 1],
-                                transition: { duration: 0.75 },
+                                transition: { duration: ENTER_DURATION },
                             }}
                             exit={{
                                 top,
-                                height: '60vh',
-                                width: '36vh',
+                                height: CARD_HEIGHT,
+                                width: CARD_WIDTH,
                                 scale: 1,
-                                transition: { duration: 0.6 },
+                                transition: { duration: EXIT_DURATION },
                             }}
                         >
                             <ImageContent
-                                initial={{ top, height: '60vh', borderRadius: '1em' }}
+                                initial={{ top, height: CARD_HEIGHT, borderRadius: '1em' }}
                                 animate={{
                                     top: 0,
                                     height: '20vh',
                                     borderRadius: '0em',
-                                    transition: { duration: 0.75 },
+                                    transition: { duration: ENTER_DURATION },
                                 }}
                                 exit={{
                                     top,
-                                    height: '60vh',
+                                    height: CARD_HEIGHT,
                                     borderRadius: '1em',
-                                    transition: { duration: 0.6 },
+                                    transition: { duration: EXIT_DURATION },
                                 }}
                             >
-                                <button onClick={onClose}>close</button>
+                                <StyledImage src={image} alt={imageAlt} />
                             </ImageContent>
                             <TextContent
                                 initial={{ opacity: 0 }}
-                                animate={{ opacity: 1, transition: { duration: 0.75 } }}
-                                exit={{ opacity: 0, transition: { duration: 0.6 } }}
+                                animate={{ opacity: 1, transition: { duration: ENTER_DURATION } }}
+                                exit={{ opacity: 0, transition: { duration: EXIT_DURATION } }}
                             >
-                                HERE IS SOME CONTENT
+                                <button onClick={onClose}>close</button>
                             </TextContent>
                         </InnerWrapper>
                     </ContentWrapper>
                     <Background
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 1, transition: { duration: 0.75 } }}
-                        exit={{ opacity: 0, transition: { duration: 0.6 } }}
+                        animate={{ opacity: 1, transition: { duration: ENTER_DURATION } }}
+                        exit={{ opacity: 0, transition: { duration: EXIT_DURATION } }}
                     />
                 </Wrapper>
             )}
