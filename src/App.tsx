@@ -1,7 +1,7 @@
 import React from 'react';
 import 'swiper/css/swiper.css';
 import './App.css';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import smoothscroll from 'smoothscroll-polyfill';
 import { isUndefined } from 'lodash';
 import { isMobile } from 'react-device-detect';
@@ -12,6 +12,8 @@ import Projects from 'apps/Projects';
 import Blog from 'apps/Blog';
 import Contact from 'apps/Contact';
 import Extra from 'apps/Extra';
+
+import { DARK_THEME } from 'utils/constants';
 
 smoothscroll.polyfill();
 
@@ -121,13 +123,15 @@ class App extends React.Component<{}, State> {
         const { top } = this.state;
 
         return (
-            <Wrapper id="parent-wrapper" initial={{ top }} animate={{ top, transition: { duration: 0.75 } }}>
-                <Experience onCardToggle={this.handleCardToggle} />
-                <Projects onCardToggle={this.handleCardToggle} />
-                <Blog onCardToggle={this.handleCardToggle} />
-                <Contact onCardToggle={this.handleCardToggle} />
-                <Extra onCardToggle={this.handleCardToggle} />
-            </Wrapper>
+            <ThemeProvider theme={DARK_THEME}>
+                <Wrapper id="parent-wrapper" initial={{ top }} animate={{ top, transition: { duration: 0.75 } }}>
+                    <Experience onCardToggle={this.handleCardToggle} />
+                    <Projects onCardToggle={this.handleCardToggle} />
+                    <Blog onCardToggle={this.handleCardToggle} />
+                    <Contact onCardToggle={this.handleCardToggle} />
+                    <Extra onCardToggle={this.handleCardToggle} />
+                </Wrapper>
+            </ThemeProvider>
         );
     }
 }

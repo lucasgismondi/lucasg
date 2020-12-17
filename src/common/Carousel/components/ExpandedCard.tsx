@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 const Background = styled(motion.div)`
     height: 100vh;
     width: 100vw;
-    background-color: white;
+    background-color: ${(props) => props.theme.background};
 `;
 
 const ContentWrapper = styled.div`

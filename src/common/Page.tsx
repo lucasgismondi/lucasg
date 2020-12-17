@@ -7,6 +7,12 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: ${(props) => props.theme.background};
+`;
+
+const HeaderWrapper = styled.div`
+    display: flex;
+    justify-content: center;
 `;
 
 interface Props {
@@ -17,7 +23,9 @@ interface Props {
 const Page: React.FC<Props> = ({ id, title, children }) => {
     return (
         <Wrapper id={id}>
-            <div>{title}</div>
+            <HeaderWrapper>
+                <h1>{title}</h1>
+            </HeaderWrapper>
             <div>{children}</div>
         </Wrapper>
     );
