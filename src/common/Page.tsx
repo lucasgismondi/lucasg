@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-    height: 100%;
+    position: relative;
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: ${(props) => props.theme.background};
 `;
 
 const HeaderWrapper = styled.div`

@@ -13,14 +13,28 @@ import Blog from 'apps/Blog';
 import Contact from 'apps/Contact';
 import Extra from 'apps/Extra';
 
+import Header from './common/Header';
+
 import { DARK_THEME } from 'utils/constants';
+import pattern from 'pattern.png';
 
 smoothscroll.polyfill();
 
 const Wrapper = styled(motion.div)`
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: fit-content;
+    background-color: ${(props) => props.theme.background};
+`;
+
+const BackgroundImage = styled.div<{ isCardSelected: boolean }>`
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+    background-image: url(${pattern});
+    filter: brightness(0%);
+    background-size: 100em auto;
+    top: 0;
 `;
 
 interface State {
@@ -120,11 +134,13 @@ class App extends React.Component<{}, State> {
     };
 
     render() {
-        const { top } = this.state;
+        const { top, isCardSelected } = this.state;
 
         return (
             <ThemeProvider theme={DARK_THEME}>
                 <Wrapper id="parent-wrapper" initial={{ top }} animate={{ top, transition: { duration: 0.75 } }}>
+                    <BackgroundImage isCardSelected={isCardSelected} />
+                    <Header />
                     <Experience onCardToggle={this.handleCardToggle} />
                     <Projects onCardToggle={this.handleCardToggle} />
                     <Blog onCardToggle={this.handleCardToggle} />
