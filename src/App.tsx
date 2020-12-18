@@ -4,7 +4,7 @@ import './App.css';
 import styled, { ThemeProvider } from 'styled-components';
 import smoothscroll from 'smoothscroll-polyfill';
 import { isUndefined } from 'lodash';
-import { isMobile } from 'react-device-detect';
+import { isMobile, isSafari } from 'react-device-detect';
 import { motion } from 'framer-motion';
 
 import Experience from 'apps/Experience';
@@ -81,6 +81,10 @@ class App extends React.Component<{}, State> {
     handleCardToggle = (isCardSelected: boolean) => this.setState({ isCardSelected });
 
     handleWheelScroll = (e: WheelEvent) => {
+        const { isCardSelected } = this.state;
+        if (isCardSelected) return;
+        e.preventDefault();
+
         const isScrollingUp = e.deltaY < 0;
         isScrollingUp ? this.handleScroll('up') : this.handleScroll('down');
     };
@@ -119,7 +123,7 @@ class App extends React.Component<{}, State> {
         this.setState({ currentPage });
         const pageName = this.pages[currentPage];
 
-        if (isMobile) {
+        if (isMobile || isSafari) {
             const parentWrapperTop = document.getElementById('parent-wrapper')?.getBoundingClientRect().top;
             const sectionTop = document.getElementById(pageName)?.getBoundingClientRect().top;
 
