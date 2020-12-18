@@ -27,7 +27,7 @@ const Wrapper = styled(motion.div)`
     background-color: ${(props) => props.theme.background};
 `;
 
-const BackgroundImage = styled.div<{ isCardSelected: boolean }>`
+const BackgroundImage = styled.div`
     position: absolute;
     height: 100%;
     width: 100vw;
@@ -134,12 +134,12 @@ class App extends React.Component<{}, State> {
     };
 
     render() {
-        const { top, isCardSelected } = this.state;
+        const { top } = this.state;
 
         return (
             <ThemeProvider theme={DARK_THEME}>
                 <Wrapper id="parent-wrapper" initial={{ top }} animate={{ top, transition: { duration: 0.75 } }}>
-                    <BackgroundImage isCardSelected={isCardSelected} />
+                    <BackgroundImage />
                     <Header />
                     <Experience onCardToggle={this.handleCardToggle} />
                     <Projects onCardToggle={this.handleCardToggle} />

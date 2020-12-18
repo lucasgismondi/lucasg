@@ -6,7 +6,7 @@ import Icon from './Icon';
 const Wrapper = styled.div`
     position: fixed;
     width: 100%;
-    z-index: 100;
+    z-index: 10;
 `;
 
 const InnerWrapper = styled.div`
