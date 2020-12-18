@@ -10,9 +10,10 @@ interface Props {
 
 const Experience: React.FC<Props> = ({ onCardToggle }) => {
     return (
-        <Page id="experience" title="Experience">
+        <Page id="experience">
             <Carousel
                 id="experience"
+                title="Experience"
                 cards={[
                     {
                         title: 'test',

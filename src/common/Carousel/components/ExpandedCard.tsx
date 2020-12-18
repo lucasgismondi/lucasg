@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { CardObject } from './Card';
 import Icon from 'common/Icon';
-import pattern from 'pattern.png';
 
 import { CARD_HEIGHT, CARD_WIDTH, CONTENT_WIDTH, ENTER_DURATION, EXIT_DURATION } from '../constants';
 
@@ -15,22 +14,6 @@ const Wrapper = styled.div`
     z-index: 10;
     top: 0;
     background-color: ${'#ffffff00'};
-`;
-
-const Background = styled(motion.div)<{ parentWrapperTop: number }>`
-    top: ${(props) => props.parentWrapperTop}px;
-    position: absolute;
-    height: 1000vh;
-    width: 100vw;
-    background-color: ${(props) => props.theme.background};
-`;
-
-const BackgroundImage = styled.div`
-    height: 100%;
-    width: 100vw;
-    background-image: url(${pattern});
-    filter: brightness(0%);
-    background-size: 100em auto;
 `;
 
 const ContentWrapper = styled.div<{ isClosing: boolean }>`
@@ -109,16 +92,12 @@ interface Props {
 
 const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitComplete, show }) => {
     let initialTop: number = 0;
-    let parentWrapperTop: number = 0;
     const [exitTop, setExitTop] = useState<number>(0);
     const [isClosing, setIsClosing] = useState(false);
 
     if (show) {
         const element = document.getElementById(searchID);
         if (element) initialTop = element.getBoundingClientRect().top;
-
-        const parentWrapper = document.getElementById('parent-wrapper');
-        if (parentWrapper) parentWrapperTop = parentWrapper.getBoundingClientRect().top;
     }
 
     const handleClose = async () => {
@@ -189,14 +168,6 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                             />
                         </InnerWrapper>
                     </ContentWrapper>
-                    <Background
-                        parentWrapperTop={parentWrapperTop}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1, transition: { duration: ENTER_DURATION } }}
-                        exit={{ opacity: 0, transition: { duration: EXIT_DURATION } }}
-                    >
-                        <BackgroundImage />
-                    </Background>
                 </Wrapper>
             )}
         </AnimatePresence>

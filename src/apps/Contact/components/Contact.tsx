@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Contact: React.FC<Props> = ({ onCardToggle }) => {
-    return <Page id="contact" title="Contact"></Page>;
+    return <Page id="contact"></Page>;
 };
 
 export default Contact;

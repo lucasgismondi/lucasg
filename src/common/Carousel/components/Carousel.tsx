@@ -3,20 +3,37 @@ import { ReactIdSwiperProps } from 'react-id-swiper';
 import { isNull } from 'lodash';
 import Swiper from 'react-id-swiper';
 import styled from 'styled-components';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import Card, { CardObject } from './Card';
 import ExpandedCard from './ExpandedCard';
+import { ENTER_DURATION, EXIT_DURATION } from '../constants';
 
 const Wrapper = styled.div`
     height: 100%;
     width: 100%;
-    position: relative;
+`;
+
+const ContentWrapper = styled(motion.div)`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+`;
+
+const HeaderWrapper = styled.div`
     display: flex;
     justify-content: center;
 `;
 
+const SwiperWrapper = styled.div`
+    width: 100%;
+`;
+
 interface Props {
     id: string;
+    title: string;
     cards: CardObject[];
     onCardToggle: Function;
 }
@@ -59,12 +76,16 @@ class Carousel extends React.Component<Props, State> {
         },
     };
 
-    handleSelect = (index: number) => {
+    handleSelect = async (index: number) => {
         const { onCardToggle } = this.props;
         const { activeIndex } = this.state;
 
         onCardToggle(true);
-        activeIndex === index && this.setState({ selectedIndex: index, isCardExpanded: true });
+        if (activeIndex === index) {
+            // await this set state to hide the card selected inside the Swiper component
+            await this.setState({ selectedIndex: index });
+            this.setState({ isCardExpanded: true });
+        }
     };
 
     handleClose = () => this.setState({ isCardExpanded: false });
@@ -92,7 +113,7 @@ class Carousel extends React.Component<Props, State> {
     };
 
     render() {
-        const { id, cards } = this.props;
+        const { id, title, cards } = this.props;
         const { selectedIndex, isCardExpanded } = this.state;
 
         return (
@@ -104,9 +125,24 @@ class Carousel extends React.Component<Props, State> {
                     onExitComplete={this.handleExitComplete}
                     show={isCardExpanded}
                 />
-                <Swiper {...this.params} ref={(o: any) => (this.swiper = o)}>
-                    {this.renderCards()}
-                </Swiper>
+                <AnimatePresence>
+                    {!isCardExpanded && (
+                        <ContentWrapper
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1, transition: { duration: ENTER_DURATION } }}
+                            exit={{ opacity: 0, transition: { duration: EXIT_DURATION } }}
+                        >
+                            <HeaderWrapper>
+                                <h1>{title}</h1>
+                            </HeaderWrapper>
+                            <SwiperWrapper>
+                                <Swiper {...this.params} ref={(o: any) => (this.swiper = o)}>
+                                    {this.renderCards()}
+                                </Swiper>
+                            </SwiperWrapper>
+                        </ContentWrapper>
+                    )}
+                </AnimatePresence>
             </Wrapper>
         );
     }

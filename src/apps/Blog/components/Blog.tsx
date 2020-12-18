@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Blog: React.FC<Props> = ({ onCardToggle }) => {
-    return <Page id="blog" title="Blog"></Page>;
+    return <Page id="blog"></Page>;
 };
 
 export default Blog;
