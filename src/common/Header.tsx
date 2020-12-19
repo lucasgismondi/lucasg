@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-
-import Icon from './Icon';
+import { motion } from 'framer-motion';
 
 const Wrapper = styled.div`
     position: fixed;
@@ -16,21 +15,43 @@ const InnerWrapper = styled.div`
     align-items: center;
 `;
 
-const IconButton = styled.button`
-    display: flex;
-    align-items: center;
-`;
-
 const Header: React.FC = () => {
     return (
         <Wrapper>
             <InnerWrapper>
                 <button>Lucas Gismondi</button>
-                <IconButton>
-                    <Icon name="menu" fontSize={1.7} />
-                </IconButton>
+                <MenuButton />
             </InnerWrapper>
         </Wrapper>
+    );
+};
+
+const MenuButtonWrapper = styled(motion.div)`
+    position: relative;
+    height: 1.5em;
+    width: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+`;
+
+const Bar = styled(motion.div)`
+    position: absolute;
+    background-color: white;
+    height: 0.17em;
+    width: 2.1em;
+`;
+
+const MenuButton: React.FC = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    return (
+        <MenuButtonWrapper onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <Bar animate={isMenuOpen ? { rotate: 45, top: '0.65em' } : { rotate: 0, top: '1em' }} />
+            <Bar animate={isMenuOpen ? { rotate: -45, bottom: '0.65em' } : { rotate: 0, bottom: '1em' }} />
+        </MenuButtonWrapper>
     );
 };
 
