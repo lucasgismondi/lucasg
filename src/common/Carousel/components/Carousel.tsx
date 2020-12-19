@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import Card, { CardObject } from './Card';
 import ExpandedCard from './ExpandedCard';
-import { ENTER_DURATION, EXIT_DURATION } from '../constants';
+import { EXIT_DURATION } from '../constants';
 
 const Wrapper = styled.div`
     height: 100%;
@@ -129,7 +129,7 @@ class Carousel extends React.Component<Props, State> {
                     {!isCardExpanded && (
                         <ContentWrapper
                             initial={{ opacity: 0 }}
-                            animate={{ opacity: 1, transition: { duration: ENTER_DURATION } }}
+                            animate={{ opacity: 1, transition: { duration: 0.6 } }}
                             exit={{ opacity: 0, transition: { duration: EXIT_DURATION } }}
                         >
                             <HeaderWrapper>

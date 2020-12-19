@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { isSafari, isBrowser } from 'react-device-detect';
 
 import { CardObject } from './Card';
 import Icon from 'common/Icon';
@@ -90,9 +91,9 @@ interface Props {
     onExitComplete: () => void;
     show: boolean;
 }
+let initialTop: number = 0;
 
 const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitComplete, show }) => {
-    let initialTop: number = 0;
     const [exitTop, setExitTop] = useState<number>(0);
     const [isClosing, setIsClosing] = useState(false);
 
@@ -102,14 +103,16 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
     }
 
     useEffect(() => {
-        const element = document.querySelector('#parent-wrapper');
-        // @ts-ignore
-        disableBodyScroll(element);
-
-        return () => {
+        if (isSafari && isBrowser) {
+            const element = document.querySelector('#parent-wrapper');
             // @ts-ignore
-            enableBodyScroll(element);
-        };
+            disableBodyScroll(element);
+
+            return () => {
+                // @ts-ignore
+                enableBodyScroll(element);
+            };
+        }
     }, []);
 
     const handleClose = async () => {
