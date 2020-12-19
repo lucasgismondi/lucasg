@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import { CardObject } from './Card';
 import Icon from 'common/Icon';
@@ -99,6 +100,17 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
         const element = document.getElementById(searchID);
         if (element) initialTop = element.getBoundingClientRect().top;
     }
+
+    useEffect(() => {
+        const element = document.querySelector('#parent-wrapper');
+        // @ts-ignore
+        disableBodyScroll(element);
+
+        return () => {
+            // @ts-ignore
+            enableBodyScroll(element);
+        };
+    }, []);
 
     const handleClose = async () => {
         const element = document.getElementById('expanded-card-content');
