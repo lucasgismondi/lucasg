@@ -42,6 +42,7 @@ const ScrollProgress: React.FC<Props> = ({ scrollToIndex, currentPage, pages, is
                     <InnerWrapper>
                         {pages.map((page, i) => (
                             <ScrollIndicator
+                                key={i}
                                 whileHover={{ opacity: 1 }}
                                 onClick={() => scrollToIndex(i)}
                                 animate={{ opacity: currentPage === i ? 1 : 0.2 }}
