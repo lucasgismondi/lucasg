@@ -46,10 +46,9 @@ const InnerWrapper = styled(motion.div)`
 
 const ExitButtonWrapper = styled(motion.div)`
     position: fixed;
-    z-index: 100;
-    top: 0;
-    width: ${CONTENT_WIDTH};
-    max-width: 100vw;
+    z-index: 200;
+    top: 2em;
+    width: 100vw;
     display: flex;
     justify-content: flex-end;
 `;
@@ -61,7 +60,7 @@ const ExitButton = styled(motion.button)`
     height: 2em;
     width: 2em;
     opacity: 0.75;
-    margin: 1em;
+    margin: 1.1em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -128,19 +127,19 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
         <AnimatePresence onExitComplete={onExitComplete}>
             {show && (
                 <Wrapper>
+                    <ExitButtonWrapper>
+                        <ExitButton
+                            onClick={handleClose}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1, transition: { delay: 0.5, duration: ENTER_DURATION } }}
+                            exit={{ opacity: 0, transition: { duration: 0.3 } }}
+                        >
+                            <Icon name="close" />
+                        </ExitButton>
+                    </ExitButtonWrapper>
                     <ContentWrapper isClosing={isClosing}>
-                        <ExitButtonWrapper>
-                            <ExitButton
-                                onClick={handleClose}
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1, transition: { delay: 0.5, duration: ENTER_DURATION } }}
-                                exit={{ opacity: 0, transition: { duration: 0.3 } }}
-                            >
-                                <Icon name="close" />
-                            </ExitButton>
-                        </ExitButtonWrapper>
                         <InnerWrapper
                             id="expanded-card-content"
                             initial={{ top: initialTop, height: CARD_HEIGHT, width: CARD_WIDTH, scale: 1 }}
