@@ -7,7 +7,7 @@ import { isSafari, isBrowser } from 'react-device-detect';
 import { CardObject } from './Card';
 import Icon from 'common/Icon';
 
-import { CARD_HEIGHT, CARD_WIDTH, CONTENT_WIDTH, ENTER_DURATION, EXIT_DURATION } from '../constants';
+import { CARD_HEIGHT, CARD_WIDTH, ENTER_DURATION, EXIT_DURATION } from '../constants';
 
 const Wrapper = styled.div`
     position: fixed;
@@ -41,7 +41,6 @@ const ContentWrapper = styled.div<{ isClosing: boolean }>`
 
 const InnerWrapper = styled(motion.div)`
     position: absolute;
-    max-width: 100vw;
 `;
 
 const ExitButtonWrapper = styled(motion.div)`
@@ -66,17 +65,14 @@ const ExitButton = styled(motion.button)`
     align-items: center;
 `;
 
-const ImageContent = styled(motion.div)`
+const ImageContent = styled(motion.div)<{ backgroundColor: string }>`
+    background-color: ${(props) => props.backgroundColor};
     width: 100%;
 
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-`;
-
-const StyledImage = styled(motion.img)`
-    width: 80vh;
 `;
 
 const TextContent = styled(motion.div)`
@@ -122,7 +118,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
         setIsClosing(false);
     };
 
-    const { image, imageAlt } = cardObject;
+    const { ImageComponent, imageBackgroundColor } = cardObject;
     return (
         <AnimatePresence onExitComplete={onExitComplete}>
             {show && (
@@ -146,7 +142,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                             animate={{
                                 top: 0,
                                 height: '100vh',
-                                width: CONTENT_WIDTH,
+                                width: '100vw',
                                 scale: [1, 0.9, 1, 1, 1],
                                 transition: { duration: ENTER_DURATION },
                             }}
@@ -159,6 +155,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                             }}
                         >
                             <ImageContent
+                                backgroundColor={imageBackgroundColor}
                                 initial={{ top: initialTop, height: CARD_HEIGHT, borderRadius: '1em' }}
                                 animate={{
                                     top: 0,
@@ -173,7 +170,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                                     transition: { duration: EXIT_DURATION },
                                 }}
                             >
-                                <StyledImage src={image} alt={imageAlt} />
+                                {ImageComponent}
                             </ImageContent>
                             <TextContent
                                 initial={{ opacity: 0 }}

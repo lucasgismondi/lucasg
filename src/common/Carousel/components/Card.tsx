@@ -2,11 +2,12 @@ import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-import { CARD_HEIGHT, CARD_WIDTH, CONTENT_WIDTH } from '../constants';
+import { CARD_HEIGHT, CARD_WIDTH } from '../constants';
 
-const Wrapper = styled(motion.div)<{ show: boolean }>`
+const Wrapper = styled(motion.div)<{ show: boolean; backgroundColor: string }>`
     border-radius: 1em;
     opacity: ${(props) => (props.show ? 0 : 1)};
+    background-color: ${(props) => props.backgroundColor};
 
     width: ${CARD_WIDTH};
     height: ${CARD_HEIGHT};
@@ -18,15 +19,11 @@ const Wrapper = styled(motion.div)<{ show: boolean }>`
     overflow: hidden;
 `;
 
-const StyledImage = styled.img`
-    width: ${CONTENT_WIDTH};
-`;
-
 export interface CardObject {
     title: string;
     subTitle: string;
-    image: string;
-    imageAlt: string;
+    ImageComponent: ReactNode;
+    imageBackgroundColor: string;
     content: ReactNode;
 }
 
@@ -39,11 +36,17 @@ interface Props {
 }
 
 const Card: React.FC<Props> = ({ className, id, cardObject, onClick, show }) => {
-    const { image, imageAlt } = cardObject;
+    const { ImageComponent, imageBackgroundColor } = cardObject;
 
     return (
-        <Wrapper className={`swiper-slide ${className}`} id={id} onClick={() => onClick()} show={show}>
-            <StyledImage src={image} alt={imageAlt} />
+        <Wrapper
+            className={`swiper-slide ${className}`}
+            id={id}
+            onClick={() => onClick()}
+            show={show}
+            backgroundColor={imageBackgroundColor}
+        >
+            {ImageComponent}
         </Wrapper>
     );
 };

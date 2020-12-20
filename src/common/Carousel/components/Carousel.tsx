@@ -114,7 +114,7 @@ class Carousel extends React.Component<Props, State> {
 
     render() {
         const { id, title, cards } = this.props;
-        const { selectedIndex, isCardExpanded } = this.state;
+        const { selectedIndex, isCardExpanded, activeIndex } = this.state;
 
         return (
             <Wrapper>
@@ -136,7 +136,7 @@ class Carousel extends React.Component<Props, State> {
                                 <h1>{title}</h1>
                             </HeaderWrapper>
                             <SwiperWrapper>
-                                <Swiper {...this.params} ref={(o: any) => (this.swiper = o)}>
+                                <Swiper {...this.params} initialSlide={activeIndex} ref={(o: any) => (this.swiper = o)}>
                                     {this.renderCards()}
                                 </Swiper>
                             </SwiperWrapper>
