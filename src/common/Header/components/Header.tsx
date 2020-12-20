@@ -17,10 +17,6 @@ const InnerWrapper = styled.div`
     align-items: center;
 `;
 
-const ButtonText = styled.h3`
-    margin: 0;
-`;
-
 interface Props {
     pageNames: string[];
     scrollToIndex: (index: number) => void;
@@ -38,7 +34,7 @@ const Header: React.FC<Props> = ({ pageNames, scrollToIndex }) => {
         <Wrapper>
             <InnerWrapper>
                 <Button hoverAnimation={false} onClick={() => handleScrollToIndex()}>
-                    <ButtonText>Lucas Gismondi</ButtonText>
+                    <h3>Lucas Gismondi</h3>
                 </Button>
                 <Menu
                     pageNames={pageNames}

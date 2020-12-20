@@ -1,6 +1,6 @@
 html {
     scroll-behavior: smooth;
-    font-size: calc(0.6em + 1vh);
+    font-size: 2.5vh;
 }
 
 body {
@@ -19,9 +19,25 @@ body {
     background: #0075FF;
 }
 
+a {
+    text-decoration: none;
+}
+
 h1 {
-    font-size: 3em;
-    margin: 0 0 0.3em 0;
+    font-size: 2.5em;
+    margin: 0;
+}
+
+h2 {
+    margin: 0;
+}
+
+h3 {
+    margin: 0;
+}
+
+h4 {
+    margin: 0;
 }
 
 button {
