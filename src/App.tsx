@@ -50,7 +50,7 @@ class App extends React.Component<{}, State> {
     componentDidMount() {
         this.setCurrentPage();
 
-        window.addEventListener('wheel', this.handleWheelScroll);
+        window.addEventListener('wheel', this.handleWheelScroll, { passive: false });
         window.addEventListener('touchstart', this.handleTouchStart);
         window.addEventListener('touchmove', this.handleTouchMove, { passive: false });
     }
