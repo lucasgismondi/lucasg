@@ -13,7 +13,8 @@ import Projects from 'apps/Projects';
 import Blog from 'apps/Blog';
 import Contact from 'apps/Contact';
 
-import Header from './common/Header';
+import Header from 'common/Header';
+import ScrollProgress from 'common/ScrollProgress';
 
 import { DARK_THEME } from 'utils/constants';
 import pattern from 'pattern.png';
@@ -144,13 +145,19 @@ class App extends React.Component<{}, State> {
     };
 
     render() {
-        const { top } = this.state;
+        const { top, currentPage, isCardSelected } = this.state;
 
         return (
             <ThemeProvider theme={DARK_THEME}>
                 <Wrapper id="parent-wrapper" initial={{ top }} animate={{ top, transition: { duration: 0.75 } }}>
                     <BackgroundImage />
                     <Header pageNames={this.pageNames} scrollToIndex={this.scrollToIndex} />
+                    <ScrollProgress
+                        scrollToIndex={this.scrollToIndex}
+                        currentPage={currentPage}
+                        pages={this.pages}
+                        isCardSelected={isCardSelected}
+                    />
                     <Home onCardToggle={this.handleCardToggle} />
                     <Experience onCardToggle={this.handleCardToggle} />
                     <Projects onCardToggle={this.handleCardToggle} />

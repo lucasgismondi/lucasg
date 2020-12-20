@@ -11,7 +11,7 @@ const Wrapper = styled(motion.div)<{ show: boolean; backgroundColor: string }>`
 
     width: ${CARD_WIDTH};
     height: ${CARD_HEIGHT};
-    margin-top: 2em;
+    margin: 2em 0 2em 0;
 
     display: flex;
     justify-content: center;
