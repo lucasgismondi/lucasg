@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Menu from './Menu';
+import Button from 'common/Button';
 
 const Wrapper = styled.div`
     position: fixed;
     width: 100%;
-    z-index: 10;
+    z-index: 100;
 `;
 
 const InnerWrapper = styled.div`
@@ -16,12 +17,31 @@ const InnerWrapper = styled.div`
     align-items: center;
 `;
 
-const Header: React.FC = () => {
+interface Props {
+    pageNames: string[];
+    scrollToIndex: (index: number) => void;
+}
+
+const Header: React.FC<Props> = ({ pageNames, scrollToIndex }) => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const handleScrollToIndex = (index: number = 0) => {
+        setIsMenuOpen(false);
+        setTimeout(() => scrollToIndex(index), 500);
+    };
+
     return (
         <Wrapper>
             <InnerWrapper>
-                <button>Lucas Gismondi</button>
-                <Menu />
+                <Button hoverAnimation={false} onClick={() => handleScrollToIndex()}>
+                    <h3>Lucas Gismondi</h3>
+                </Button>
+                <Menu
+                    pageNames={pageNames}
+                    scrollToIndex={handleScrollToIndex}
+                    isMenuOpen={isMenuOpen}
+                    setIsMenuOpen={setIsMenuOpen}
+                />
             </InnerWrapper>
         </Wrapper>
     );

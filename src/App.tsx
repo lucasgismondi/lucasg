@@ -7,11 +7,11 @@ import { isUndefined } from 'lodash';
 import { isMobile, isSafari } from 'react-device-detect';
 import { motion } from 'framer-motion';
 
+import Home from 'apps/Home';
 import Experience from 'apps/Experience';
 import Projects from 'apps/Projects';
 import Blog from 'apps/Blog';
 import Contact from 'apps/Contact';
-import Extra from 'apps/Extra';
 
 import Header from './common/Header';
 
@@ -67,7 +67,8 @@ class App extends React.Component<{}, State> {
         isCardSelected: false,
         top: 0,
     };
-    pages = ['experience', 'projects', 'blog', 'contact', 'extra'];
+    pages = ['home', 'experience', 'projects', 'blog', 'contact'];
+    pageNames = ['Home', 'Experience', 'Projects', 'Blog', 'Contact'];
 
     setCurrentPage = () => {
         const hash = window.location.hash;
@@ -120,8 +121,13 @@ class App extends React.Component<{}, State> {
             return;
 
         currentPage = direction === 'up' ? currentPage - 1 : currentPage + 1;
-        this.setState({ currentPage });
-        const pageName = this.pages[currentPage];
+
+        this.scrollToIndex(currentPage);
+    };
+
+    scrollToIndex = (index: number) => {
+        this.setState({ currentPage: index });
+        const pageName = this.pages[index];
 
         if (isMobile || isSafari) {
             const parentWrapperTop = document.getElementById('parent-wrapper')?.getBoundingClientRect().top;
@@ -144,12 +150,12 @@ class App extends React.Component<{}, State> {
             <ThemeProvider theme={DARK_THEME}>
                 <Wrapper id="parent-wrapper" initial={{ top }} animate={{ top, transition: { duration: 0.75 } }}>
                     <BackgroundImage />
-                    <Header />
+                    <Header pageNames={this.pageNames} scrollToIndex={this.scrollToIndex} />
+                    <Home onCardToggle={this.handleCardToggle} />
                     <Experience onCardToggle={this.handleCardToggle} />
                     <Projects onCardToggle={this.handleCardToggle} />
                     <Blog onCardToggle={this.handleCardToggle} />
                     <Contact onCardToggle={this.handleCardToggle} />
-                    <Extra onCardToggle={this.handleCardToggle} />
                 </Wrapper>
             </ThemeProvider>
         );
