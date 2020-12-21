@@ -99,8 +99,8 @@ class Carousel extends React.Component<Props, State> {
         const { onCardToggle } = this.props;
         const { activeIndex } = this.state;
 
-        onCardToggle(true, true);
         if (activeIndex === index) {
+            onCardToggle(true, true);
             // await this set state to hide the card selected inside the Swiper component
             await this.setState({ selectedIndex: index });
             this.setState({ isCardExpanded: true });
