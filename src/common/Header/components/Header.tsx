@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import EventEmitter from 'eventemitter3';
 
 import Menu from './Menu';
 import Link from 'common/Link';
+
+export const NavigateEmitter = new EventEmitter();
 
 const Wrapper = styled.div`
     position: fixed;
@@ -27,6 +30,7 @@ const Header: React.FC<Props> = ({ pageNames, scrollToIndex }) => {
 
     const handleScrollToIndex = (index: number = 0) => {
         setIsMenuOpen(false);
+        NavigateEmitter.emit('navigating');
         setTimeout(() => scrollToIndex(index, true), 500);
     };
 

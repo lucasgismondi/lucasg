@@ -139,7 +139,7 @@ class App extends React.Component<{}, State> {
 
     scrollToIndex = (index: number, isNavigating: boolean = false) => {
         if (isNavigating) {
-            this.setState({ isNavigating: true });
+            this.setState({ isNavigating: true, isCardSelected: false });
             setTimeout(() => this.setState({ isNavigating: false }), 500);
         }
         this.setState({ currentPage: index });
