@@ -75,6 +75,7 @@ class Carousel extends React.Component<Props, State> {
         grabCursor: true,
         centeredSlides: true,
         slidesPerView: 'auto',
+        keyboard: true,
         on: {
             slideChangeTransitionEnd: () => {
                 // @ts-ignore
