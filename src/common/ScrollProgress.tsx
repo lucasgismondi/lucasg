@@ -32,7 +32,7 @@ const InnerIndicator = styled.div`
 `;
 
 interface Props {
-    scrollToIndex: (index: number) => void;
+    scrollToIndex: (index: number, isNavigating: boolean) => void;
     currentPage: number;
     pages: string[];
     isCardExpanded: boolean;
@@ -48,7 +48,7 @@ const ScrollProgress: React.FC<Props> = ({ scrollToIndex, currentPage, pages, is
                             <ScrollIndicator
                                 key={i}
                                 whileHover={{ opacity: 1 }}
-                                onClick={() => scrollToIndex(i)}
+                                onClick={() => scrollToIndex(i, true)}
                                 animate={{ opacity: currentPage === i ? 1 : 0.2 }}
                             >
                                 <InnerIndicator />

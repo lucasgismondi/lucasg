@@ -3,10 +3,11 @@ import Page from 'common/Page';
 
 interface Props {
     onCardToggle: Function;
+    showContents: boolean;
 }
 
-const Contact: React.FC<Props> = ({ onCardToggle }) => {
-    return <Page id="contact"></Page>;
+const Contact: React.FC<Props> = ({ onCardToggle, showContents }) => {
+    return <Page id="contact" showContents={showContents}></Page>;
 };
 
 export default Contact;

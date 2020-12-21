@@ -7,10 +7,6 @@ import Carousel from 'common/Carousel/components/Carousel';
 import rhythmLogo from '../assets/rhythmLogo.png';
 import uoftLogo from '../assets/UofTLogo.png';
 
-interface Props {
-    onCardToggle: Function;
-}
-
 const RhythmImage = styled.img`
     width: 27vh;
 `;
@@ -20,9 +16,14 @@ const UofTImage = styled.img`
     filter: brightness(0) invert(1);
 `;
 
-const Projects: React.FC<Props> = ({ onCardToggle }) => {
+interface Props {
+    onCardToggle: Function;
+    showContents: boolean;
+}
+
+const Projects: React.FC<Props> = ({ onCardToggle, showContents }) => {
     return (
-        <Page id="projects">
+        <Page id="projects" showContents={showContents}>
             <Carousel
                 id="projects"
                 title="Projects"

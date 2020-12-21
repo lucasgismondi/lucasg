@@ -41,6 +41,7 @@ const BackgroundImage = styled.div`
 interface State {
     startMobilePos: number;
     isTransitioning: boolean;
+    isNavigating: boolean;
     currentPage: number;
     isCardSelected: boolean; // false after expanded card close animation is complete
     isCardExpanded: boolean; // false after close button is pressed on expanded card
@@ -65,6 +66,7 @@ class App extends React.Component<{}, State> {
     state: State = {
         startMobilePos: 0,
         isTransitioning: false,
+        isNavigating: false,
         currentPage: 0,
         isCardSelected: false,
         isCardExpanded: false,
@@ -78,7 +80,11 @@ class App extends React.Component<{}, State> {
         if (hash) {
             const currentPage = this.pages.indexOf(window.location.hash.slice(1));
 
-            if (currentPage >= 0) this.setState({ currentPage });
+            if (currentPage >= 0) {
+                this.setState({ isNavigating: true });
+                setTimeout(() => this.setState({ isNavigating: false }), 500);
+                this.setState({ currentPage });
+            }
         }
     };
 
@@ -112,8 +118,8 @@ class App extends React.Component<{}, State> {
     };
 
     handleScroll = (direction: 'up' | 'down') => {
-        let { currentPage, isTransitioning, isCardSelected } = this.state;
-        if (isTransitioning || isCardSelected) {
+        let { currentPage, isTransitioning, isNavigating, isCardSelected } = this.state;
+        if (isTransitioning || isNavigating || isCardSelected) {
             return;
         } else {
             this.setState({ isTransitioning: true });
@@ -131,7 +137,11 @@ class App extends React.Component<{}, State> {
         this.scrollToIndex(currentPage);
     };
 
-    scrollToIndex = (index: number) => {
+    scrollToIndex = (index: number, isNavigating: boolean = false) => {
+        if (isNavigating) {
+            this.setState({ isNavigating: true });
+            setTimeout(() => this.setState({ isNavigating: false }), 500);
+        }
         this.setState({ currentPage: index });
         const pageName = this.pages[index];
 
@@ -150,7 +160,7 @@ class App extends React.Component<{}, State> {
     };
 
     render() {
-        const { top, currentPage, isCardExpanded } = this.state;
+        const { top, currentPage, isCardExpanded, isNavigating } = this.state;
 
         return (
             <ThemeProvider theme={DARK_THEME}>
@@ -163,11 +173,11 @@ class App extends React.Component<{}, State> {
                         pages={this.pages}
                         isCardExpanded={isCardExpanded}
                     />
-                    <Home onCardToggle={this.handleCardToggle} />
-                    <Experience onCardToggle={this.handleCardToggle} />
-                    <Projects onCardToggle={this.handleCardToggle} />
-                    <Blog onCardToggle={this.handleCardToggle} />
-                    <Contact onCardToggle={this.handleCardToggle} />
+                    <Home onCardToggle={this.handleCardToggle} showContents={currentPage === 0 || isNavigating} />
+                    <Experience onCardToggle={this.handleCardToggle} showContents={currentPage === 1 || isNavigating} />
+                    <Projects onCardToggle={this.handleCardToggle} showContents={currentPage === 2 || isNavigating} />
+                    <Blog onCardToggle={this.handleCardToggle} showContents={currentPage === 3 || isNavigating} />
+                    <Contact onCardToggle={this.handleCardToggle} showContents={currentPage === 4 || isNavigating} />
                 </Wrapper>
             </ThemeProvider>
         );

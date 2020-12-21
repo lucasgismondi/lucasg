@@ -15,7 +15,7 @@ const Wrapper = styled.div`
     width: 100vw;
     z-index: 10;
     top: 0;
-    background-color: ${'#ffffff00'};
+    background-color: ${'#FFFFFF00'};
 `;
 
 const ContentWrapper = styled.div<{ isClosing: boolean }>`
@@ -23,7 +23,7 @@ const ContentWrapper = styled.div<{ isClosing: boolean }>`
     z-index: 100;
     height: 100vh;
     width: 100vw;
-    background-color: ${'#ffffff00'};
+    background-color: ${'#FFFFFF00'};
     display: flex;
     justify-content: center;
 

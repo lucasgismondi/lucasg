@@ -7,10 +7,6 @@ import Carousel from 'common/Carousel/components/Carousel';
 import loopioLogo from '../assets/loopioLogo.png';
 import aerialPhotoworksLogo from '../assets/aerialPhotoworksLogo.png';
 
-interface Props {
-    onCardToggle: Function;
-}
-
 const LoopioImage = styled.img`
     width: 27vh;
     filter: brightness(0%);
@@ -20,9 +16,14 @@ const AerialPhotoworksImage = styled.img`
     width: 26vh;
 `;
 
-const Experience: React.FC<Props> = ({ onCardToggle }) => {
+interface Props {
+    onCardToggle: Function;
+    showContents: boolean;
+}
+
+const Experience: React.FC<Props> = ({ onCardToggle, showContents }) => {
     return (
-        <Page id="experience">
+        <Page id="experience" showContents={showContents}>
             <Carousel
                 id="experience"
                 title="Experience"
@@ -41,7 +42,7 @@ const Experience: React.FC<Props> = ({ onCardToggle }) => {
                         ImageComponent: (
                             <AerialPhotoworksImage src={aerialPhotoworksLogo} alt="aerial-photoworks-logo" />
                         ),
-                        imageBackgroundColor: '#ffffff',
+                        imageBackgroundColor: '#FFFFFF',
                         imageTextColor: 'black',
                         content: null,
                     },

@@ -29,11 +29,12 @@ const Description = styled.div`
 
 interface Props {
     onCardToggle: Function;
+    showContents: boolean;
 }
 
-const Home: React.FC<Props> = () => {
+const Home: React.FC<Props> = ({ showContents }) => {
     return (
-        <Page id="home">
+        <Page id="home" showContents={showContents}>
             <InnerWrapper>
                 <LucasImage src={lucasImage} />
                 <h1>Lucas Gismondi</h1>
