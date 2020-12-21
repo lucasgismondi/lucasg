@@ -5,7 +5,6 @@ import styled from 'styled-components';
 interface Props {
     className?: string;
     onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-    hoverAnimation?: boolean;
 }
 
 const InnerWrapper = styled.div`
@@ -18,7 +17,7 @@ const Underline = styled(motion.div)`
     background-color: white;
 `;
 
-const Button: React.FC<Props> = ({ className, onClick, hoverAnimation = true, children }) => {
+const Button: React.FC<Props> = ({ className, onClick, children }) => {
     const [isHovering, setIsHovering] = useState(false);
 
     return (
@@ -30,7 +29,7 @@ const Button: React.FC<Props> = ({ className, onClick, hoverAnimation = true, ch
         >
             <InnerWrapper>
                 {children}
-                {hoverAnimation && <Underline animate={{ opacity: isHovering ? 1 : 0 }} />}
+                <Underline animate={{ opacity: isHovering ? 1 : 0 }} />
             </InnerWrapper>
         </button>
     );

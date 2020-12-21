@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Menu from './Menu';
-import Button from 'common/Button';
+import Link from 'common/Link';
 
 const Wrapper = styled.div`
     position: fixed;
@@ -33,9 +33,9 @@ const Header: React.FC<Props> = ({ pageNames, scrollToIndex }) => {
     return (
         <Wrapper>
             <InnerWrapper>
-                <Button hoverAnimation={false} onClick={() => handleScrollToIndex()}>
+                <Link href="/" newTab={false}>
                     <h3>Lucas Gismondi</h3>
-                </Button>
+                </Link>
                 <Menu
                     pageNames={pageNames}
                     scrollToIndex={handleScrollToIndex}

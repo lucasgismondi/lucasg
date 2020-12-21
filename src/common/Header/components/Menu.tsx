@@ -12,7 +12,6 @@ const MenuButtonWrapper = styled(motion.button)`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
 `;
 
 const Bar = styled(motion.div)`
