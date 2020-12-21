@@ -82,6 +82,7 @@ const HeadingWrapper = styled(motion.div)<{ color: string }>`
     left: 0;
     bottom: 0;
     padding: 1em;
+    max-width: calc(${CARD_WIDTH} - 2em);
     color: ${(props) => props.color};
 `;
 

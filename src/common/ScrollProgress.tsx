@@ -27,7 +27,8 @@ const ScrollIndicator = styled(motion.div)`
 
 const InnerIndicator = styled.div`
     background-color: white;
-    height: 100%;
+    height: 10vh;
+    width: 100%;
 `;
 
 interface Props {
