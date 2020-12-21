@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { isSafari, isBrowser } from 'react-device-detect';
@@ -66,6 +66,8 @@ const ExitButton = styled(motion.button)`
 `;
 
 const ImageContent = styled(motion.div)<{ backgroundColor: string }>`
+    position: relative;
+    top: 0;
     background-color: ${(props) => props.backgroundColor};
     width: 100%;
 
@@ -73,6 +75,14 @@ const ImageContent = styled(motion.div)<{ backgroundColor: string }>`
     justify-content: center;
     align-items: center;
     overflow: hidden;
+`;
+
+const HeadingWrapper = styled(motion.div)<{ color: string }>`
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 1em;
+    color: ${(props) => props.color};
 `;
 
 const TextContent = styled(motion.div)`
@@ -118,7 +128,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
         setIsClosing(false);
     };
 
-    const { ImageComponent, imageBackgroundColor } = cardObject;
+    const { ImageComponent, imageBackgroundColor, title, subTitle, imageTextColor } = cardObject;
     return (
         <AnimatePresence onExitComplete={onExitComplete}>
             {show && (
@@ -156,21 +166,32 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                         >
                             <ImageContent
                                 backgroundColor={imageBackgroundColor}
-                                initial={{ top: initialTop, height: CARD_HEIGHT, borderRadius: '1em' }}
+                                initial={{ height: CARD_HEIGHT, borderRadius: '1em' }}
                                 animate={{
-                                    top: 0,
                                     height: '20vh',
                                     borderRadius: '0em',
                                     transition: { duration: ENTER_DURATION },
                                 }}
                                 exit={{
-                                    top: exitTop,
                                     height: CARD_HEIGHT,
                                     borderRadius: '1em',
                                     transition: { duration: EXIT_DURATION },
                                 }}
                             >
                                 {ImageComponent}
+                                <HeadingWrapper
+                                    color={imageTextColor}
+                                    initial={{ opacity: 1 }}
+                                    animate={{ opacity: 0, transition: { duration: ENTER_DURATION } }}
+                                    exit={{ opacity: 1, transition: { duration: EXIT_DURATION } }}
+                                >
+                                    <h4>
+                                        <i>{title}</i>
+                                    </h4>
+                                    <h4>
+                                        <i>{subTitle}</i>
+                                    </h4>
+                                </HeadingWrapper>
                             </ImageContent>
                             <TextContent
                                 initial={{ opacity: 0 }}

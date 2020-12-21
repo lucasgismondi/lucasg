@@ -28,17 +28,19 @@ const Projects: React.FC<Props> = ({ onCardToggle }) => {
                 title="Projects"
                 cards={[
                     {
-                        title: 'test',
-                        subTitle: 'test',
+                        title: 'Cross Platform Music Sharing',
+                        subTitle: '',
                         ImageComponent: <RhythmImage src={rhythmLogo} alt="rhtyhm-logo" />,
                         imageBackgroundColor: '#BC34D4',
+                        imageTextColor: 'white',
                         content: null,
                     },
                     {
-                        title: 'test',
-                        subTitle: 'test',
+                        title: '',
+                        subTitle: '',
                         ImageComponent: <UofTImage src={uoftLogo} alt="university-of-toronto-logo" />,
                         imageBackgroundColor: '#082C64',
+                        imageTextColor: 'white',
                         content: null,
                     },
                 ]}

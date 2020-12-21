@@ -28,19 +28,21 @@ const Experience: React.FC<Props> = ({ onCardToggle }) => {
                 title="Experience"
                 cards={[
                     {
-                        title: 'test',
-                        subTitle: 'test',
+                        title: 'Full Stack',
+                        subTitle: '05/2018 - 08/2019',
                         ImageComponent: <LoopioImage src={loopioLogo} alt="loopio-logo" />,
                         imageBackgroundColor: '#02D5CC',
+                        imageTextColor: 'black',
                         content: null,
                     },
                     {
-                        title: 'test',
-                        subTitle: 'test',
+                        title: 'Owner',
+                        subTitle: '05/2014 - 05/2018',
                         ImageComponent: (
                             <AerialPhotoworksImage src={aerialPhotoworksLogo} alt="aerial-photoworks-logo" />
                         ),
                         imageBackgroundColor: '#ffffff',
+                        imageTextColor: 'black',
                         content: null,
                     },
                 ]}
