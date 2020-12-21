@@ -55,12 +55,14 @@ class App extends React.Component<{}, State> {
         window.addEventListener('wheel', this.handleWheelScroll, { passive: false });
         window.addEventListener('touchstart', this.handleTouchStart);
         window.addEventListener('touchmove', this.handleTouchMove, { passive: false });
+        window.addEventListener('keydown', this.handleKeyScroll);
     }
 
     componentWillUnmount() {
         window.removeEventListener('wheel', this.handleWheelScroll);
         window.removeEventListener('touchstart', this.handleTouchStart);
         window.removeEventListener('touchmove', this.handleTouchMove);
+        window.removeEventListener('keydown', this.handleKeyScroll);
     }
 
     state: State = {
@@ -113,6 +115,17 @@ class App extends React.Component<{}, State> {
         if (startMobilePos - currMobilePos < -100) {
             this.handleScroll('up');
         } else if (startMobilePos - currMobilePos > 100) {
+            this.handleScroll('down');
+        }
+    };
+
+    handleKeyScroll = (e: KeyboardEvent) => {
+        const { isCardSelected } = this.state;
+        if (isCardSelected) return;
+
+        if (e.code === 'ArrowUp') {
+            this.handleScroll('up');
+        } else if (e.code === 'ArrowDown') {
             this.handleScroll('down');
         }
     };
