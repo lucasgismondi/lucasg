@@ -24,8 +24,8 @@ const Page: React.FC<Props> = ({ id, showContents, children }) => {
             <AnimatePresence>
                 {showContents && (
                     <InnerWrapper
-                        initial={{ opacity: 1 }}
-                        animate={{ opacity: 1 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, transition: { delay: 0.3, duration: 0.5 } }}
                         exit={{ opacity: 0, transition: { delay: 0.5, duration: 0.5 } }}
                     >
                         {children}
