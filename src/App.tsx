@@ -96,7 +96,6 @@ class App extends React.Component<{}, State> {
 
     handleResize = () => {
         const { currentPage } = this.state;
-        console.log('resizing');
         this.scrollToIndex(currentPage);
     };
 
