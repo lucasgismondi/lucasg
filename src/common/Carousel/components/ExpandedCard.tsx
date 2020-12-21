@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { isSafari, isBrowser } from 'react-device-detect';
@@ -54,7 +54,7 @@ const ExitButtonWrapper = styled(motion.div)`
 
 const ExitButton = styled(motion.button)`
     border: none;
-    background-color: grey;
+    background-color: white;
     border-radius: 50%;
     height: 2em;
     width: 2em;
@@ -132,7 +132,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                             animate={{ opacity: 1, transition: { delay: 0.5, duration: ENTER_DURATION } }}
                             exit={{ opacity: 0, transition: { duration: 0.3 } }}
                         >
-                            <Icon name="close" />
+                            <Icon name="close" color="black" />
                         </ExitButton>
                     </ExitButtonWrapper>
                     <ContentWrapper isClosing={isClosing}>

@@ -31,13 +31,13 @@ interface Props {
     scrollToIndex: (index: number) => void;
     currentPage: number;
     pages: string[];
-    isCardSelected: boolean;
+    isCardExpanded: boolean;
 }
 
-const ScrollProgress: React.FC<Props> = ({ scrollToIndex, currentPage, pages, isCardSelected }) => {
+const ScrollProgress: React.FC<Props> = ({ scrollToIndex, currentPage, pages, isCardExpanded }) => {
     return (
         <AnimatePresence>
-            {!isCardSelected && (
+            {!isCardExpanded && (
                 <Wrapper initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                     <InnerWrapper>
                         {pages.map((page, i) => (

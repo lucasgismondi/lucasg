@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import Button from 'common/Button';
 
-const MenuButtonWrapper = styled(motion.div)`
+const MenuButtonWrapper = styled(motion.button)`
     position: relative;
     height: 1.5em;
     width: 3em;

@@ -42,7 +42,8 @@ interface State {
     startMobilePos: number;
     isTransitioning: boolean;
     currentPage: number;
-    isCardSelected: boolean;
+    isCardSelected: boolean; // false after expanded card close animation is complete
+    isCardExpanded: boolean; // false after close button is pressed on expanded card
     top: number;
 }
 
@@ -66,6 +67,7 @@ class App extends React.Component<{}, State> {
         isTransitioning: false,
         currentPage: 0,
         isCardSelected: false,
+        isCardExpanded: false,
         top: 0,
     };
     pages = ['home', 'experience', 'projects', 'blog', 'contact'];
@@ -80,7 +82,8 @@ class App extends React.Component<{}, State> {
         }
     };
 
-    handleCardToggle = (isCardSelected: boolean) => this.setState({ isCardSelected });
+    handleCardToggle = (isCardSelected: boolean, isCardExpanded: boolean) =>
+        this.setState({ isCardSelected, isCardExpanded });
 
     handleWheelScroll = (e: WheelEvent) => {
         const { isCardSelected } = this.state;
@@ -147,7 +150,7 @@ class App extends React.Component<{}, State> {
     };
 
     render() {
-        const { top, currentPage, isCardSelected } = this.state;
+        const { top, currentPage, isCardExpanded } = this.state;
 
         return (
             <ThemeProvider theme={DARK_THEME}>
@@ -158,7 +161,7 @@ class App extends React.Component<{}, State> {
                         scrollToIndex={this.scrollToIndex}
                         currentPage={currentPage}
                         pages={this.pages}
-                        isCardSelected={isCardSelected}
+                        isCardExpanded={isCardExpanded}
                     />
                     <Home onCardToggle={this.handleCardToggle} />
                     <Experience onCardToggle={this.handleCardToggle} />
