@@ -4,7 +4,6 @@ import './App.css';
 import styled, { ThemeProvider } from 'styled-components';
 import smoothscroll from 'smoothscroll-polyfill';
 import { isUndefined } from 'lodash';
-import { isMobile, isSafari } from 'react-device-detect';
 import { motion } from 'framer-motion';
 
 import Home from 'apps/Home';
@@ -52,6 +51,7 @@ class App extends React.Component<{}, State> {
     componentDidMount() {
         this.setCurrentPage();
 
+        window.addEventListener('resize', this.handleResize);
         window.addEventListener('wheel', this.handleWheelScroll, { passive: false });
         window.addEventListener('touchstart', this.handleTouchStart);
         window.addEventListener('touchmove', this.handleTouchMove, { passive: false });
@@ -59,6 +59,7 @@ class App extends React.Component<{}, State> {
     }
 
     componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
         window.removeEventListener('wheel', this.handleWheelScroll);
         window.removeEventListener('touchstart', this.handleTouchStart);
         window.removeEventListener('touchmove', this.handleTouchMove);
@@ -92,6 +93,12 @@ class App extends React.Component<{}, State> {
 
     handleCardToggle = (isCardSelected: boolean, isCardExpanded: boolean) =>
         this.setState({ isCardSelected, isCardExpanded });
+
+    handleResize = () => {
+        const { currentPage } = this.state;
+        console.log('resizing');
+        this.scrollToIndex(currentPage);
+    };
 
     handleWheelScroll = (e: WheelEvent) => {
         const { isCardSelected } = this.state;
@@ -158,17 +165,15 @@ class App extends React.Component<{}, State> {
         this.setState({ currentPage: index });
         const pageName = this.pages[index];
 
-        if (isMobile || isSafari) {
-            const parentWrapperTop = document.getElementById('parent-wrapper')?.getBoundingClientRect().top;
-            const sectionTop = document.getElementById(pageName)?.getBoundingClientRect().top;
+        const parentWrapperTop = document.getElementById('parent-wrapper')?.getBoundingClientRect().top;
+        const sectionTop = document.getElementById(pageName)?.getBoundingClientRect().top;
 
-            if (isUndefined(sectionTop) || isUndefined(parentWrapperTop)) return;
-            const newTop = sectionTop - parentWrapperTop;
-            window.scrollTo({
-                top: newTop,
-                behavior: 'smooth',
-            });
-        }
+        if (isUndefined(sectionTop) || isUndefined(parentWrapperTop)) return;
+        const newTop = sectionTop - parentWrapperTop;
+        window.scrollTo({
+            top: newTop,
+            behavior: 'smooth',
+        });
         window.location.hash = `#${pageName}`;
     };
 
