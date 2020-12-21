@@ -15,16 +15,19 @@ const InnerWrapper = styled.div`
     height: 50vh;
     display: flex;
     flex-direction: column;
-    padding: 1vh;
 `;
 
 const ScrollIndicator = styled(motion.div)`
-    background-color: white;
     opacity: 0.2;
     flex-grow: 1;
     width: 0.5vh;
-    margin-bottom: 1vh;
+    padding: 1vh 1vh 0 1vh;
     cursor: pointer;
+`;
+
+const InnerIndicator = styled.div`
+    background-color: white;
+    height: 100%;
 `;
 
 interface Props {
@@ -46,7 +49,9 @@ const ScrollProgress: React.FC<Props> = ({ scrollToIndex, currentPage, pages, is
                                 whileHover={{ opacity: 1 }}
                                 onClick={() => scrollToIndex(i)}
                                 animate={{ opacity: currentPage === i ? 1 : 0.2 }}
-                            />
+                            >
+                                <InnerIndicator />
+                            </ScrollIndicator>
                         ))}
                     </InnerWrapper>
                 </Wrapper>
