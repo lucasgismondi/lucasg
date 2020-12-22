@@ -64,9 +64,9 @@ const Card: React.FC<Props> = ({ className, id, cardObject, onClick, show, tabIn
                 <h4>
                     <i>{title}</i>
                 </h4>
-                <h4>
+                <h5>
                     <i>{subTitle}</i>
-                </h4>
+                </h5>
             </HeadingWrapper>
         </Wrapper>
     );

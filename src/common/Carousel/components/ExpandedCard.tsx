@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import { isSafari, isBrowser } from 'react-device-detect';
+import { isSafari, isBrowser, isMobileSafari } from 'react-device-detect';
 
 import { CardObject } from './Card';
 import Icon from 'common/Icon';
@@ -86,8 +86,16 @@ const HeadingWrapper = styled(motion.div)<{ color: string }>`
     color: ${(props) => props.color};
 `;
 
+const TextWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+`;
+
 const TextContent = styled(motion.div)`
     height: 100vh;
+    padding: 1em;
+    max-width: 1000px;
 `;
 
 interface Props {
@@ -129,7 +137,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
         setIsClosing(false);
     };
 
-    const { ImageComponent, imageBackgroundColor, title, subTitle, imageTextColor } = cardObject;
+    const { ImageComponent, imageBackgroundColor, title, subTitle, imageTextColor, content } = cardObject;
     return (
         <AnimatePresence onExitComplete={onExitComplete}>
             {show && (
@@ -189,16 +197,33 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                                     <h4>
                                         <i>{title}</i>
                                     </h4>
-                                    <h4>
+                                    <h5>
                                         <i>{subTitle}</i>
-                                    </h4>
+                                    </h5>
                                 </HeadingWrapper>
                             </ImageContent>
-                            <TextContent
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1, transition: { duration: ENTER_DURATION } }}
-                                exit={{ opacity: 0, transition: { duration: EXIT_DURATION } }}
-                            />
+                            <TextWrapper>
+                                <TextContent
+                                    initial={{ opacity: 0 }}
+                                    animate={{
+                                        opacity: 1,
+                                        transition: { delay: ENTER_DURATION, duration: ENTER_DURATION },
+                                    }}
+                                    exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                                >
+                                    {content}
+                                    {isMobileSafari && (
+                                        <>
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <br />
+                                        </>
+                                    )}
+                                </TextContent>
+                            </TextWrapper>
                         </InnerWrapper>
                     </ContentWrapper>
                 </Wrapper>

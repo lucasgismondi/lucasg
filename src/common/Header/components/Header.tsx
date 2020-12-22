@@ -37,7 +37,7 @@ const Header: React.FC<Props> = ({ pageNames, scrollToIndex }) => {
     return (
         <Wrapper>
             <InnerWrapper>
-                <Link href="/" newTab={false}>
+                <Link href="/" textColor="white" newTab={false}>
                     <h3>Lucas Gismondi</h3>
                 </Link>
                 <Menu

@@ -41,7 +41,7 @@ const Home: React.FC<Props> = ({ showContents, isNavigating }) => {
                 <h1>Lucas Gismondi</h1>
                 <h2>Software Developer</h2>
                 <Description>Some description goes here...</Description>
-                <Link href={resume}>
+                <Link href={resume} textColor="white">
                     <h4>View Resume</h4>
                 </Link>
             </InnerWrapper>
