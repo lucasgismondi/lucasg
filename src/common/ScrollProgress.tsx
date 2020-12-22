@@ -17,18 +17,16 @@ const InnerWrapper = styled.div`
     flex-direction: column;
 `;
 
-const ScrollIndicator = styled(motion.div)`
+const ScrollIndicator = styled(motion.button)`
     opacity: 0.2;
     flex-grow: 1;
-    width: 0.5vh;
     padding: 1vh 1vh 0 1vh;
-    cursor: pointer;
 `;
 
 const InnerIndicator = styled.div`
     background-color: white;
     height: 10vh;
-    width: 100%;
+    width: 0.5vh;
 `;
 
 interface Props {
