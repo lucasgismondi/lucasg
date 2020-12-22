@@ -44,9 +44,10 @@ interface Props {
     cardObject: CardObject;
     onClick: Function;
     show: boolean;
+    tabIndex?: number;
 }
 
-const Card: React.FC<Props> = ({ className, id, cardObject, onClick, show }) => {
+const Card: React.FC<Props> = ({ className, id, cardObject, onClick, show, tabIndex }) => {
     const { ImageComponent, imageBackgroundColor, imageTextColor, title, subTitle } = cardObject;
 
     return (
@@ -56,6 +57,7 @@ const Card: React.FC<Props> = ({ className, id, cardObject, onClick, show }) => 
             onClick={() => onClick()}
             show={show}
             backgroundColor={imageBackgroundColor}
+            tabIndex={tabIndex}
         >
             {ImageComponent}
             <HeadingWrapper color={imageTextColor}>

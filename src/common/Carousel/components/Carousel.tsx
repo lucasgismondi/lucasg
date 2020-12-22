@@ -52,14 +52,24 @@ class Carousel extends React.Component<Props, State> {
         // fixing weird bug that keeps isNavigating to true after navigation
         this.setState({ isNavigating: false });
         NavigateEmitter.addListener('navigating', this.handleNavigating);
+        window.addEventListener('keydown', this.handleEnterKey);
     }
 
     componentWillUnmount() {
         NavigateEmitter.removeListener('navigating', this.handleNavigating);
+        window.removeEventListener('keydown', this.handleEnterKey);
     }
 
     handleNavigating = () => {
         this.setState({ isNavigating: true, selectedIndex: null, isCardExpanded: false });
+    };
+
+    handleEnterKey = (e: KeyboardEvent) => {
+        const activeElement = document.activeElement;
+        if (activeElement && activeElement.className.includes('swiper-slide-active') && e.code === 'Enter') {
+            const { activeIndex } = this.state;
+            this.handleSelect(activeIndex);
+        }
     };
 
     state: State = {
@@ -126,7 +136,7 @@ class Carousel extends React.Component<Props, State> {
 
     renderCards = () => {
         const { id, cards } = this.props;
-        const { selectedIndex } = this.state;
+        const { selectedIndex, activeIndex } = this.state;
 
         return cards.map((card, i) => (
             <Card
@@ -135,6 +145,7 @@ class Carousel extends React.Component<Props, State> {
                 cardObject={card}
                 onClick={() => this.handleSelect(i)}
                 show={selectedIndex === i}
+                tabIndex={activeIndex === i ? 0 : undefined}
             />
         ));
     };
