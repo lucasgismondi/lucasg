@@ -7,15 +7,24 @@ const Wrapper = styled(motion.a)<{ textColor: string }>`
 `;
 
 interface Props {
+    className?: string;
     href: string;
     textColor?: string;
     newTab?: boolean;
     hoverAnimation?: boolean;
 }
 
-const Link: React.FC<Props> = ({ href, textColor = '#0075FF', newTab = true, hoverAnimation = true, children }) => {
+const Link: React.FC<Props> = ({
+    className,
+    href,
+    textColor = '#0075FF',
+    newTab = true,
+    hoverAnimation = true,
+    children,
+}) => {
     return (
         <Wrapper
+            className={className}
             href={href}
             textColor={textColor}
             target={newTab ? '_blank' : ''}
