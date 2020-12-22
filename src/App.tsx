@@ -191,11 +191,31 @@ class App extends React.Component<{}, State> {
                         pages={this.pages}
                         isCardExpanded={isCardExpanded}
                     />
-                    <Home onCardToggle={this.handleCardToggle} showContents={currentPage === 0 || isNavigating} />
-                    <Experience onCardToggle={this.handleCardToggle} showContents={currentPage === 1 || isNavigating} />
-                    <Projects onCardToggle={this.handleCardToggle} showContents={currentPage === 2 || isNavigating} />
-                    <Blog onCardToggle={this.handleCardToggle} showContents={currentPage === 3 || isNavigating} />
-                    <Contact onCardToggle={this.handleCardToggle} showContents={currentPage === 4 || isNavigating} />
+                    <Home
+                        onCardToggle={this.handleCardToggle}
+                        showContents={currentPage === 0}
+                        isNavigating={isNavigating}
+                    />
+                    <Experience
+                        onCardToggle={this.handleCardToggle}
+                        showContents={currentPage === 1}
+                        isNavigating={isNavigating}
+                    />
+                    <Projects
+                        onCardToggle={this.handleCardToggle}
+                        showContents={currentPage === 2}
+                        isNavigating={isNavigating}
+                    />
+                    <Blog
+                        onCardToggle={this.handleCardToggle}
+                        showContents={currentPage === 3}
+                        isNavigating={isNavigating}
+                    />
+                    <Contact
+                        onCardToggle={this.handleCardToggle}
+                        showContents={currentPage === 4}
+                        isNavigating={isNavigating}
+                    />
                 </Wrapper>
             </ThemeProvider>
         );

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Page from 'common/Page';
-import Carousel from 'common/Carousel/components/Carousel';
+import Carousel from 'common/Carousel';
 
 import rhythmLogo from '../assets/rhythmLogo.png';
 import uoftLogo from '../assets/UofTLogo.png';
@@ -19,11 +19,12 @@ const UofTImage = styled.img`
 interface Props {
     onCardToggle: Function;
     showContents: boolean;
+    isNavigating: boolean;
 }
 
-const Projects: React.FC<Props> = ({ onCardToggle, showContents }) => {
+const Projects: React.FC<Props> = ({ onCardToggle, showContents, isNavigating }) => {
     return (
-        <Page id="projects" showContents={showContents}>
+        <Page id="projects" showContents={showContents} isNavigating={isNavigating}>
             <Carousel
                 id="projects"
                 title="Projects"

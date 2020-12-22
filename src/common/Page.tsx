@@ -16,15 +16,16 @@ const InnerWrapper = styled(motion.div)`
 interface Props {
     id: string;
     showContents: boolean;
+    isNavigating: boolean;
 }
 
-const Page: React.FC<Props> = ({ id, showContents, children }) => {
+const Page: React.FC<Props> = ({ id, showContents, isNavigating, children }) => {
     return (
         <Wrapper id={id}>
             <AnimatePresence>
-                {showContents && (
+                {(showContents || isNavigating) && (
                     <InnerWrapper
-                        initial={{ opacity: 0 }}
+                        initial={{ opacity: isNavigating ? 1 : 0 }}
                         animate={{ opacity: 1, transition: { delay: 0.3, duration: 0.5 } }}
                         exit={{ opacity: 0, transition: { delay: 0.5, duration: 0.5 } }}
                     >

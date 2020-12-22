@@ -96,10 +96,13 @@ class Carousel extends React.Component<Props, State> {
     };
 
     handleSelect = async (index: number) => {
-        const { onCardToggle } = this.props;
+        const { onCardToggle, cards } = this.props;
         const { activeIndex } = this.state;
 
         if (activeIndex === index) {
+            const { isLocked } = cards[index];
+            if (isLocked) return;
+
             onCardToggle(true, true);
             // await this set state to hide the card selected inside the Swiper component
             await this.setState({ selectedIndex: index });

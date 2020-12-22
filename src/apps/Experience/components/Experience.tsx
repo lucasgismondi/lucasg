@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Page from 'common/Page';
-import Carousel from 'common/Carousel/components/Carousel';
+import Carousel from 'common/Carousel';
 
 import loopioLogo from '../assets/loopioLogo.png';
 import aerialPhotoworksLogo from '../assets/aerialPhotoworksLogo.png';
@@ -19,11 +19,12 @@ const AerialPhotoworksImage = styled.img`
 interface Props {
     onCardToggle: Function;
     showContents: boolean;
+    isNavigating: boolean;
 }
 
-const Experience: React.FC<Props> = ({ onCardToggle, showContents }) => {
+const Experience: React.FC<Props> = ({ onCardToggle, showContents, isNavigating }) => {
     return (
-        <Page id="experience" showContents={showContents}>
+        <Page id="experience" showContents={showContents} isNavigating={isNavigating}>
             <Carousel
                 id="experience"
                 title="Experience"
