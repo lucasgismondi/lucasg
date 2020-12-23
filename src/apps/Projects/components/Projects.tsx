@@ -110,7 +110,8 @@ const UofTContent = (
         <br />
         <br />
         <br />
-        <h3>Structured Data Capture | 6 Person Team</h3>
+        <h3>Structured Data Capture</h3>
+        <h3>6 Person Team</h3>
         <h5>CSC302 - Engineering Large Software Systems</h5>
         <br />
         The goal of this project was to apply software engineering data management practices to create a prototype
@@ -120,12 +121,13 @@ const UofTContent = (
         testing, and project management tasks were involved when creating the product.
         <br />
         <br />
-        repository
+        <Link href="https://github.com/csc302-fall-2020/proj-TBD">Repository</Link>
         <br />
         <br />
         <br />
         <br />
-        <h3>Medical School Cost Calculator | 6 Person Team</h3>
+        <h3>Medical School Cost Calculator</h3>
+        <h3>6 Person Team</h3>
         <h5>CSC301 - Introduction to Software Engineering</h5>
         <br />
         For this project, we implemented a Medical School Cost Calculator that assists students applying to Medical
@@ -133,12 +135,13 @@ const UofTContent = (
         Medicine. The webapp continues to be actively maintained by students who take CSC301.
         <br />
         <br />
-        <Link href="https://med-school-calculator.web.app/">website</Link>
+        <Link href="https://med-school-calculator.web.app/">Website</Link>
         <br />
         <br />
         <br />
         <br />
-        <h3>Action Item Manager | 4 Person Team</h3>
+        <h3>Action Item Manager</h3>
+        <h3>4 Person Team</h3>
         <h5>CSC309 - Programming on the Web</h5>
         <br />
         For this project, we were given the freedom to develop any web application we wanted as long as there was a
@@ -148,12 +151,15 @@ const UofTContent = (
         progress on this task. Our Action Item Manager attempts to solve this problem.
         <br />
         <br />
-        repository <Link href="https://pacific-atoll-01415.herokuapp.com/login">website</Link>
+        <Link href="https://github.com/test-js/action-item-manager">Repository</Link>
+        <br />
+        <Link href="https://pacific-atoll-01415.herokuapp.com/login">Website</Link>
         <br />
         <br />
         <br />
         <br />
-        <h3>File System Implementation | 2 Person Team</h3>
+        <h3>File System Implementation</h3>
+        <h3>2 Person Team</h3>
         <h5>CSC369 - Operating Systems</h5>
         <br />
         Our task for this assignment was to design and implement a simple extent-based file system using C and FUSE.
@@ -163,7 +169,8 @@ const UofTContent = (
         <br />
         <br />
         <br />
-        <h3>Political Persuasion Identifier | Solo Project</h3>
+        <h3>Political Persuasion Identifier</h3>
+        <h3>Solo Project</h3>
         <h5>CSC401 - Natural Language Computing</h5>
         <br />
         For this assignment, we made use of python and scikit-learn to identify where someone was on the political
@@ -173,11 +180,14 @@ const UofTContent = (
         <br />
         <br />
         <br />
-        <h3>Altera Guitar Hero | 2 Person Team</h3>
+        <h3>Altera Guitar Hero</h3>
+        <h3>2 Person Team</h3>
         <h5>CSC258 - Computer Organization</h5>
         <br />
-        For this project, we were given the freedom to implement some graphical game using the De1-SoC Altera
-        Development board. Our group implemented a Guitar Hero style game.
+        For this project, we were given the freedom to implement a graphical game using the De1-SoC Altera Development
+        board. Our group implemented a Guitar Hero style game.
+        <br />
+        <br />
     </div>
 );
 
