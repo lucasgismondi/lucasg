@@ -87,7 +87,7 @@ class Carousel extends React.Component<Props, State> {
         slidesPerView: 'auto',
         keyboard: true,
         on: {
-            slideChangeTransitionEnd: () => {
+            transitionEnd: () => {
                 // @ts-ignore
                 this.swiper.childNodes[0].childNodes.forEach((card, i) => {
                     if (card.className.includes('swiper-slide-active')) {
