@@ -59,7 +59,7 @@ const Header: React.FC<Props> = ({ pageNames, scrollToIndex }) => {
                     <h3>Lucas Gismondi</h3>
                 </Link>
                 <Right>
-                    <IconLink href="https://github.com/test-js" textColor="white">
+                    <IconLink href="https://github.com/lucasgismondi" textColor="white">
                         <GitHub style={{ fontSize: '1.3em' }} />
                     </IconLink>
                     <IconLink href="https://www.linkedin.com/in/lucasgismondi/" textColor="white">

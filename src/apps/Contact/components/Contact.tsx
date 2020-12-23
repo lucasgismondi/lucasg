@@ -56,7 +56,7 @@ const Contact: React.FC<Props> = ({ onCardToggle, showContents, isNavigating }) 
                         <h2>lucas.m.gismondi@gmail.com</h2>
                     </Link>
                     <IconWrapper>
-                        <IconLink href="https://github.com/test-js" textColor="white">
+                        <IconLink href="https://github.com/lucasgismondi" textColor="white">
                             <GitHub style={{ fontSize: '3em' }} />
                         </IconLink>
                         <IconLink href="https://www.linkedin.com/in/lucasgismondi/" textColor="white">

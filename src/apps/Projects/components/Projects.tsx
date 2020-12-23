@@ -151,7 +151,7 @@ const UofTContent = (
         progress on this task. Our Action Item Manager attempts to solve this problem.
         <br />
         <br />
-        <Link href="https://github.com/test-js/action-item-manager">Repository</Link>
+        <Link href="https://github.com/lucasgismondi/action-item-manager">Repository</Link>
         <br />
         <Link href="https://pacific-atoll-01415.herokuapp.com/login">Website</Link>
         <br />
