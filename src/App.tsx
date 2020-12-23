@@ -53,6 +53,7 @@ class App extends React.Component<{}, State> {
         this.setCurrentPage();
 
         window.addEventListener('resize', this.handleResize);
+        window.addEventListener('hashchange', this.setCurrentPage);
         window.addEventListener('wheel', this.handleWheelScroll, { passive: false });
         window.addEventListener('touchstart', this.handleTouchStart);
         window.addEventListener('touchmove', this.handleTouchMove, { passive: false });
@@ -61,6 +62,7 @@ class App extends React.Component<{}, State> {
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.handleResize);
+        window.removeEventListener('hashchange', this.setCurrentPage);
         window.removeEventListener('wheel', this.handleWheelScroll);
         window.removeEventListener('touchstart', this.handleTouchStart);
         window.removeEventListener('touchmove', this.handleTouchMove);
@@ -87,7 +89,7 @@ class App extends React.Component<{}, State> {
             if (currentPage >= 0) {
                 this.setState({ isNavigating: true });
                 setTimeout(() => this.setState({ isNavigating: false }), 500);
-                this.setState({ currentPage });
+                this.scrollToIndex(currentPage, true);
             }
         }
     };
