@@ -93,7 +93,6 @@ const TextWrapper = styled.div`
 `;
 
 const TextContent = styled(motion.div)`
-    height: 100vh;
     padding: 1em;
     max-width: 1000px;
 `;
@@ -194,12 +193,8 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                                     animate={{ opacity: 0, transition: { duration: ENTER_DURATION } }}
                                     exit={{ opacity: 1, transition: { duration: EXIT_DURATION } }}
                                 >
-                                    <h4>
-                                        <i>{title}</i>
-                                    </h4>
-                                    <h5>
-                                        <i>{subTitle}</i>
-                                    </h5>
+                                    <h4>{title}</h4>
+                                    <h5>{subTitle}</h5>
                                 </HeadingWrapper>
                             </ImageContent>
                             <TextWrapper>

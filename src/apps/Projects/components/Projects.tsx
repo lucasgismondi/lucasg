@@ -40,10 +40,7 @@ const StyledIframe = styled.iframe`
 const RhythmContent = (
     <div>
         <h3>
-            <Link href="https://www.getrhythmapp.com">
-                <i>Rhythm</i>
-            </Link>{' '}
-            | <i>Cross Platform Music Sharing</i>
+            <Link href="https://www.getrhythmapp.com">Rhythm</Link> | Cross Platform Music Sharing
         </h3>
         <ul>
             <li>
@@ -69,9 +66,8 @@ const RhythmContent = (
         </ul>
         Rhythm is a music sharing platform that bridges the gap between streaming services. No matter if you subscribe
         to Apple Music or Spotify Premium, you and your friends can follow each other, share your favourite songs,
-        albums, or playlists, and stream them right from Rhythm. Your news feed caters to your chosen streaming service,
-        meaning that even when your friends post songs from the other service, you see the version that you can stream.
-        If you like a song someone shares, save it directly to your Apple or Spotify library with the touch of a button.
+        albums, or playlists, and stream them right from Rhythm. If you like a song someone shares, save it directly to
+        your Apple or Spotify library with the touch of a button.
         <br />
         <br />
         I would love to make the repository public but I am unable due to a variety of reasons. But just know some of my
@@ -92,6 +88,96 @@ const RhythmContent = (
         </IframeWrapper>
         <br />
         <br />
+    </div>
+);
+
+const UofTContent = (
+    <div>
+        Working towards my degree at UofT has been a very rewarding process. UofT has taught me how to solve problems
+        using First Principles Thinking which will likely prove to be the most important lesson in my career. Some of my
+        coursework included Algorithm Design & Analysis, Operating Systems, Algorithms & Data Structures, Human &
+        Computer Interaction, Engineering Large Software Systems, Software Testing & Verification, Natural Language
+        Processing My favourite part of the experience was working with smart classmates in the beautiful city of
+        Toronto.
+        <br />
+        <br />
+        Below are a few of my favourite projects I have worked on throughout the years. The projects that are highest on
+        the list are the most relevant.
+        <br />
+        <br />
+        <b>Note some repositories are hidden for academic integrity reasons but may be made available temporarily.</b>
+        <br />
+        <br />
+        <br />
+        <br />
+        <h3>Structured Data Capture | 6 Person Team</h3>
+        <h5>CSC302 - Engineering Large Software Systems</h5>
+        <br />
+        The goal of this project was to apply software engineering data management practices to create a prototype
+        reporting system that uses versioned, structured data to enable more efficient and timely collection of pandemic
+        status data and thus improve information governance. For this project, we worked to implement the Standard Data
+        Capture specification by creating a client and backend service. UI/UX design, system architecture, dev ops,
+        testing, and project management tasks were involved when creating the product.
+        <br />
+        <br />
+        repository
+        <br />
+        <br />
+        <br />
+        <br />
+        <h3>Medical School Cost Calculator | 6 Person Team</h3>
+        <h5>CSC301 - Introduction to Software Engineering</h5>
+        <br />
+        For this project, we implemented a Medical School Cost Calculator that assists students applying to Medical
+        School reduce their application costs. We developed the webapp for the University of Toronto Faculty of
+        Medicine. The webapp continues to be actively maintained by students who take CSC301.
+        <br />
+        <br />
+        <Link href="https://med-school-calculator.web.app/">website</Link>
+        <br />
+        <br />
+        <br />
+        <br />
+        <h3>Action Item Manager | 4 Person Team</h3>
+        <h5>CSC309 - Programming on the Web</h5>
+        <br />
+        For this project, we were given the freedom to develop any web application we wanted as long as there was a
+        backend, client, and user authentication involved. Our idea actually stemmed from a process observation made
+        when I was interning at Loopio. There are multiple cases in a practical world where each member on a team has to
+        complete the same task, but there are no formal tools for enterprise companies to achieve tracking individual
+        progress on this task. Our Action Item Manager attempts to solve this problem.
+        <br />
+        <br />
+        repository <Link href="https://pacific-atoll-01415.herokuapp.com/login">website</Link>
+        <br />
+        <br />
+        <br />
+        <br />
+        <h3>File System Implementation | 2 Person Team</h3>
+        <h5>CSC369 - Operating Systems</h5>
+        <br />
+        Our task for this assignment was to design and implement a simple extent-based file system using C and FUSE.
+        Commands like ls, stat, mkdir, rm were required to support multiple data blocks and extents.
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h3>Political Persuasion Identifier | Solo Project</h3>
+        <h5>CSC401 - Natural Language Computing</h5>
+        <br />
+        For this assignment, we made use of python and scikit-learn to identify where someone was on the political
+        spectrum based on their reddit comments on political subreddits. The project involved cleaning input data,
+        training models, and determining the features and models using p values. My algorithm had a 60% success rate.
+        <br />
+        <br />
+        <br />
+        <br />
+        <h3>Altera Guitar Hero | 2 Person Team</h3>
+        <h5>CSC258 - Computer Organization</h5>
+        <br />
+        For this project, we were given the freedom to implement some graphical game using the De1-SoC Altera
+        Development board. Our group implemented a Guitar Hero style game.
     </div>
 );
 
@@ -116,7 +202,7 @@ const Projects: React.FC<Props> = ({ onCardToggle, showContents, isNavigating })
                         ImageComponent: <UofTImage src={uoftLogo} alt="university-of-toronto-logo" />,
                         imageBackgroundColor: '#082C64',
                         imageTextColor: 'white',
-                        content: null,
+                        content: UofTContent,
                     },
                 ]}
                 onCardToggle={onCardToggle}

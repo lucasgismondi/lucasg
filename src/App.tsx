@@ -105,7 +105,7 @@ class App extends React.Component<{}, State> {
         if (isCardSelected) return;
         e.preventDefault();
 
-        if (Math.abs(e.deltaY) < 100) return; // To help with natural scrolling
+        if (Math.abs(e.deltaY) < 80) return; // To help with natural scrolling
 
         const isScrollingUp = e.deltaY < 0;
         isScrollingUp ? this.handleScroll('up') : this.handleScroll('down');

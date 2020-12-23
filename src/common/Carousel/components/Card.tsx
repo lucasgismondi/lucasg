@@ -61,12 +61,8 @@ const Card: React.FC<Props> = ({ className, id, cardObject, onClick, show, tabIn
         >
             {ImageComponent}
             <HeadingWrapper color={imageTextColor}>
-                <h4>
-                    <i>{title}</i>
-                </h4>
-                <h5>
-                    <i>{subTitle}</i>
-                </h5>
+                <h4>{title}</h4>
+                <h5>{subTitle}</h5>
             </HeadingWrapper>
         </Wrapper>
     );

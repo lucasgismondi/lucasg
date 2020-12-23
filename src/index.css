@@ -27,23 +27,29 @@ a {
 h1 {
     font-size: 2.5em;
     margin: 0;
+    font-style: italic;
 }
 
 h2 {
     font-size: 1.4em;
     margin: 0;
+    font-style: italic;
 }
 
 h3 {
     margin: 0;
+    font-style: italic;
 }
 
 h4 {
     margin: 0;
+    font-style: italic;
 }
 
 h5 {
     margin: 0;
+    font-style: italic;
+    font-weight: normal;
 }
 
 button {
