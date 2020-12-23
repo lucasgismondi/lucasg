@@ -35,7 +35,7 @@ export interface CardObject {
     imageBackgroundColor: string;
     imageTextColor: string;
     content: ReactNode;
-    isLocked?: boolean;
+    link?: string;
 }
 
 interface Props {

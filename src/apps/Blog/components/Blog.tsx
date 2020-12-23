@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import Page from 'common/Page';
 import Carousel from 'common/Carousel';
-import Link from 'common/Link';
 
 import loopioBlogImage from '../assets/loopioBlogCover.jpg';
 
@@ -27,20 +26,12 @@ const Blog: React.FC<Props> = ({ onCardToggle, showContents, isNavigating }) => 
                     {
                         title: "My Experience as Loopio's First-Ever Intern",
                         subTitle: '',
-                        ImageComponent: (
-                            <Link
-                                href={
-                                    'https://medium.com/loopio-product/my-experience-as-loopios-first-intern-ever-a891967777f4'
-                                }
-                                hoverAnimation={false}
-                            >
-                                <LoopioBlogImage src={loopioBlogImage} alt="loopio-blog" />
-                            </Link>
-                        ),
+                        ImageComponent: <LoopioBlogImage src={loopioBlogImage} alt="loopio-blog" />,
                         imageBackgroundColor: '#FFFFFF',
                         imageTextColor: 'white',
                         content: null,
-                        isLocked: true,
+                        link:
+                            'https://medium.com/loopio-product/my-experience-as-loopios-first-intern-ever-a891967777f4',
                     },
                 ]}
                 onCardToggle={onCardToggle}

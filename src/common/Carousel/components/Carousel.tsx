@@ -65,10 +65,13 @@ class Carousel extends React.Component<Props, State> {
     };
 
     handleEnterKey = (e: KeyboardEvent) => {
-        const activeElement = document.activeElement;
-        if (activeElement && activeElement.className.includes('swiper-slide-active') && e.code === 'Enter') {
+        let activeElement = document.activeElement;
+        if (activeElement && activeElement.className.includes('swiper-slide') && e.code === 'Enter') {
             const { activeIndex } = this.state;
-            this.handleSelect(activeIndex);
+
+            let index = 0;
+            while ((activeElement = activeElement.previousSibling as Element) != null) index++;
+            if (activeIndex === index) this.handleSelect(activeIndex);
         }
     };
 
@@ -110,8 +113,11 @@ class Carousel extends React.Component<Props, State> {
         const { activeIndex } = this.state;
 
         if (activeIndex === index) {
-            const { isLocked } = cards[index];
-            if (isLocked) return;
+            const { link } = cards[index];
+            if (link) {
+                window.open(link, '_blank', 'noopener noreferrer');
+                return;
+            }
 
             onCardToggle(true, true);
             // await this set state to hide the card selected inside the Swiper component
