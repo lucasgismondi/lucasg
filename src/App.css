@@ -3,3 +3,12 @@
     height: 100%;
     overflow: hidden;
 }
+
+.swiper-pagination-bullet {
+    background: white;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    opacity: 1;
+}

@@ -106,6 +106,11 @@ class Carousel extends React.Component<Props, State> {
             modifier: 1,
             slideShadows: true,
         },
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true,
+        },
     };
 
     handleSelect = async (index: number) => {
