@@ -30,6 +30,7 @@ const Wrapper = styled(motion.div)`
 
 const BackgroundImage = styled.div`
     position: absolute;
+    opacity: 0.2;
     height: 100%;
     width: 100vw;
     ${!isMobileSafari && `background-image: url(${pattern});`}
