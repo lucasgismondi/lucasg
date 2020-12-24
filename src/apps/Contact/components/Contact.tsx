@@ -53,7 +53,7 @@ const Contact: React.FC<Props> = ({ onCardToggle, showContents, isNavigating }) 
                 <h1>Contact</h1>
                 <ContactWrapper>
                     <Link href="mailto:lucas.m.gismondi@gmail.com" textColor="white">
-                        <h2>lucas.m.gismondi@gmail.com</h2>
+                        <h3>lucas.m.gismondi@gmail.com</h3>
                     </Link>
                     <IconWrapper>
                         <IconLink href="https://github.com/lucasgismondi" textColor="white">
