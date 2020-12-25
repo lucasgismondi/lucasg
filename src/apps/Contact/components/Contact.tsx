@@ -50,10 +50,10 @@ const Contact: React.FC<Props> = ({ onCardToggle, showContents, isNavigating }) 
     return (
         <Page id="contact" showContents={showContents} isNavigating={isNavigating}>
             <Wrapper>
-                <h1>Contact</h1>
+                <h1 className="header">Contact</h1>
                 <ContactWrapper>
                     <Link href="mailto:lucas.m.gismondi@gmail.com" textColor="white">
-                        <h3>lucas.m.gismondi@gmail.com</h3>
+                        <h3 style={{ fontStyle: 'normal' }}>lucas.m.gismondi@gmail.com</h3>
                     </Link>
                     <IconWrapper>
                         <IconLink href="https://github.com/lucasgismondi" textColor="white">

@@ -56,7 +56,7 @@ const Header: React.FC<Props> = ({ pageNames, scrollToIndex }) => {
         <Wrapper>
             <InnerWrapper>
                 <Link href="/" textColor="white" newTab={false}>
-                    <h3>Lucas Gismondi</h3>
+                    <h3 className="header">Lucas Gismondi</h3>
                 </Link>
                 <Right>
                     <IconLink href="https://github.com/lucasgismondi" textColor="white">

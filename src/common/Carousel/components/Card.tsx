@@ -4,12 +4,11 @@ import { motion } from 'framer-motion';
 
 import { CARD_HEIGHT, CARD_WIDTH } from '../constants';
 
-const Wrapper = styled(motion.div)<{ show: boolean; backgroundColor: string; color: string }>`
+const Wrapper = styled(motion.div)<{ show: boolean; backgroundColor: string }>`
     position: relative;
     border-radius: 1em;
     opacity: ${(props) => (props.show ? 0 : 1)};
     background-color: ${(props) => props.backgroundColor};
-    color: ${(props) => props.color};
 
     width: ${CARD_WIDTH};
     height: ${CARD_HEIGHT};
@@ -34,7 +33,6 @@ const HeadingWrapper = styled.div`
     bottom: 0;
     left: 0;
     padding: 1em;
-    color: ${(props) => props.color};
 `;
 
 export interface CardObject {
@@ -74,7 +72,6 @@ const Card: React.FC<Props> = ({ className, id, cardObject, onClick, show, tabIn
             onClick={handleClick}
             show={show}
             backgroundColor={imageBackgroundColor}
-            color={imageTextColor}
             tabIndex={tabIndex}
         >
             {hasClickMeAnimation && !didClickOnce && (
@@ -84,8 +81,12 @@ const Card: React.FC<Props> = ({ className, id, cardObject, onClick, show, tabIn
             )}
             {ImageComponent}
             <HeadingWrapper>
-                <h4>{title}</h4>
-                <h5>{subTitle}</h5>
+                <h4 className="header" style={{ color: imageTextColor }}>
+                    {title}
+                </h4>
+                <h5 className="subheader" style={{ color: imageTextColor }}>
+                    {subTitle}
+                </h5>
             </HeadingWrapper>
         </Wrapper>
     );

@@ -184,7 +184,7 @@ class Carousel extends React.Component<Props, State> {
                             exit={{ opacity: 0, transition: { duration: EXIT_DURATION } }}
                         >
                             <HeaderWrapper>
-                                <h1>{title}</h1>
+                                <h1 className="header">{title}</h1>
                             </HeaderWrapper>
                             <SwiperWrapper>
                                 <Swiper {...this.params} initialSlide={activeIndex} ref={(o: any) => (this.swiper = o)}>

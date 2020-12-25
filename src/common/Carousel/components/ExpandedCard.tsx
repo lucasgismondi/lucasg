@@ -77,13 +77,12 @@ const ImageContent = styled(motion.div)<{ backgroundColor: string }>`
     overflow: hidden;
 `;
 
-const HeadingWrapper = styled(motion.div)<{ color: string }>`
+const HeadingWrapper = styled(motion.div)`
     position: absolute;
     left: 0;
     bottom: 0;
     padding: 1em;
     max-width: calc(${CARD_WIDTH} - 2em);
-    color: ${(props) => props.color};
 `;
 
 const TextWrapper = styled.div`
@@ -188,13 +187,16 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                             >
                                 {ImageComponent}
                                 <HeadingWrapper
-                                    color={imageTextColor}
                                     initial={{ opacity: 1 }}
                                     animate={{ opacity: 0, transition: { duration: ENTER_DURATION } }}
                                     exit={{ opacity: 1, transition: { duration: EXIT_DURATION } }}
                                 >
-                                    <h4>{title}</h4>
-                                    <h5>{subTitle}</h5>
+                                    <h4 className="header" style={{ color: imageTextColor }}>
+                                        {title}
+                                    </h4>
+                                    <h5 className="subheader" style={{ color: imageTextColor }}>
+                                        {subTitle}
+                                    </h5>
                                 </HeadingWrapper>
                             </ImageContent>
                             <TextWrapper>

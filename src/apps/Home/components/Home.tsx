@@ -42,8 +42,8 @@ const Home: React.FC<Props> = ({ showContents, isNavigating }) => {
         <Page id="home" showContents={showContents} isNavigating={isNavigating}>
             <InnerWrapper>
                 <LucasImage src={lucasImage} />
-                <h1>Lucas Gismondi</h1>
-                <h2>Software Developer</h2>
+                <h1 className="header">Lucas Gismondi</h1>
+                <h2 className="subheader">Software Developer</h2>
                 <Description>
                     In May of 2018, I started my career as a Full-Stack Software Developer at Loopio. Since then, I have
                     built a large scale social network for music, called Rhythm, and have deployed multiple web

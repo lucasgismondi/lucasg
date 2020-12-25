@@ -39,7 +39,7 @@ const StyledIframe = styled.iframe`
 
 const RhythmContent = (
     <div>
-        <h3>
+        <h3 className="header">
             <Link href="https://www.getrhythmapp.com">Rhythm</Link> | Cross Platform Music Sharing
         </h3>
         <ul>
@@ -110,9 +110,9 @@ const UofTContent = (
         <br />
         <br />
         <br />
-        <h3>Structured Data Capture</h3>
-        <h3>6 Person Team</h3>
-        <h5>CSC302 - Engineering Large Software Systems</h5>
+        <h3 className="header">Structured Data Capture</h3>
+        <h4 className="subheader">6 Person Team</h4>
+        <h5 className="subheader">CSC302 - Engineering Large Software Systems</h5>
         <br />
         The goal of this project was to apply software engineering data management practices to create a prototype
         reporting system that uses versioned, structured data to enable more efficient and timely collection of pandemic
@@ -126,9 +126,9 @@ const UofTContent = (
         <br />
         <br />
         <br />
-        <h3>Medical School Cost Calculator</h3>
-        <h3>6 Person Team</h3>
-        <h5>CSC301 - Introduction to Software Engineering</h5>
+        <h3 className="header">Medical School Cost Calculator</h3>
+        <h4 className="subheader">6 Person Team</h4>
+        <h5 className="subheader">CSC301 - Introduction to Software Engineering</h5>
         <br />
         For this project, we implemented a Medical School Cost Calculator that assists students applying to Medical
         School reduce their application costs. We developed the webapp for the University of Toronto Faculty of
@@ -140,9 +140,9 @@ const UofTContent = (
         <br />
         <br />
         <br />
-        <h3>Action Item Manager</h3>
-        <h3>4 Person Team</h3>
-        <h5>CSC309 - Programming on the Web</h5>
+        <h3 className="header">Action Item Manager</h3>
+        <h4 className="subheader">4 Person Team</h4>
+        <h5 className="subheader">CSC309 - Programming on the Web</h5>
         <br />
         For this project, we were given the freedom to develop any web application we wanted as long as there was a
         backend, client, and user authentication involved. Our idea actually stemmed from a process observation made
@@ -158,9 +158,9 @@ const UofTContent = (
         <br />
         <br />
         <br />
-        <h3>File System Implementation</h3>
-        <h3>2 Person Team</h3>
-        <h5>CSC369 - Operating Systems</h5>
+        <h3 className="header">File System Implementation</h3>
+        <h4 className="subheader">2 Person Team</h4>
+        <h5 className="subheader">CSC369 - Operating Systems</h5>
         <br />
         Our task for this assignment was to design and implement a simple extent-based file system using C and FUSE.
         Commands like ls, stat, mkdir, rm were required to support multiple data blocks and extents.
@@ -169,9 +169,9 @@ const UofTContent = (
         <br />
         <br />
         <br />
-        <h3>Political Persuasion Identifier</h3>
-        <h3>Solo Project</h3>
-        <h5>CSC401 - Natural Language Computing</h5>
+        <h3 className="header">Political Persuasion Identifier</h3>
+        <h4 className="subheader">Solo Project</h4>
+        <h5 className="subheader">CSC401 - Natural Language Computing</h5>
         <br />
         For this assignment, we made use of python and scikit-learn to identify where someone was on the political
         spectrum based on their reddit comments on political subreddits. The project involved cleaning input data,
@@ -180,9 +180,9 @@ const UofTContent = (
         <br />
         <br />
         <br />
-        <h3>Altera Guitar Hero</h3>
-        <h3>2 Person Team</h3>
-        <h5>CSC258 - Computer Organization</h5>
+        <h3 className="header">Altera Guitar Hero</h3>
+        <h4 className="subheader">2 Person Team</h4>
+        <h5 className="subheader">CSC258 - Computer Organization</h5>
         <br />
         For this project, we were given the freedom to implement a graphical game using the De1-SoC Altera Development
         board. Our group implemented a Guitar Hero style game.

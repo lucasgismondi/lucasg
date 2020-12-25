@@ -82,7 +82,7 @@ const Menu: React.FC<Props> = ({ pageNames, scrollToIndex, isMenuOpen, setIsMenu
                         <MenuInnerWrapper>
                             {pageNames.map((name, i) => (
                                 <NavigationButton key={i} onClick={() => scrollToIndex(i)}>
-                                    <h1>{name}</h1>
+                                    <h1 className="header">{name}</h1>
                                 </NavigationButton>
                             ))}
                         </MenuInnerWrapper>

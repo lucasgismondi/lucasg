@@ -25,11 +25,11 @@ interface Props {
 
 const LoopioContent = (
     <div>
-        <h3>Full Stack Software Developer (Intern)</h3>
-        <h3>
+        <h3 className="header">Full Stack Software Developer (Intern)</h3>
+        <h4 className="subheader">
             <Link href="https://www.loopio.com">Loopio Inc.</Link> | RFP Management Software
-        </h3>
-        <h5>05/2018 - 08/2019</h5>
+        </h4>
+        <h5 className="subheader">05/2018 - 08/2019</h5>
         <ul>
             <li>
                 Developed a Chrome Extension to assist with importing content into the customer library from anywhere on
@@ -74,9 +74,9 @@ const StyledIframe = styled.iframe`
 
 const AerialPhotoworksContent = (
     <div>
-        <h3>Owner</h3>
-        <h3>Aerial PhotoWorks | Aerial Photography Service</h3>
-        <h5>05/2014 - 08/2018</h5>
+        <h3 className="header">Owner</h3>
+        <h4 className="subheader">Aerial PhotoWorks | Aerial Photography Service</h4>
+        <h5 className="subheader">05/2014 - 08/2018</h5>
         <br />
         Aerial PhotoWorks was an aerial photography and video company I started when I was 16. At the time, drone
         technology was beginning to trend, so I thought it would be a perfect time to take advantage of the opportunity

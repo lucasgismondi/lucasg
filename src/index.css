@@ -9,7 +9,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
-    color: white;
+    color: #d4d4d4;
 }
 ::-moz-selection {
     /* Code for Firefox */
@@ -26,30 +26,23 @@ a {
 
 h1 {
     font-size: 2.5em;
-    margin: 0;
-    font-style: italic;
 }
 
 h2 {
     font-size: 1.4em;
-    margin: 0;
-    font-style: italic;
 }
 
-h3 {
-    margin: 0;
+.header {
+    color: white;
     font-style: italic;
+    margin: 0;
 }
 
-h4 {
-    margin: 0;
-    font-style: italic;
-}
-
-h5 {
-    margin: 0;
-    font-style: italic;
+.subheader {
+    color: white;
+    font-family: Aleo, serif;
     font-weight: normal;
+    margin: 0;
 }
 
 button {
