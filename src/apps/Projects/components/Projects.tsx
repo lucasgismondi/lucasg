@@ -3,10 +3,11 @@ import styled from 'styled-components';
 
 import Page from 'common/Page';
 import Carousel from 'common/Carousel';
+import Break from 'common/Break';
+import Link from 'common/Link';
 
 import rhythmLogo from '../assets/rhythmLogo.png';
 import uoftLogo from '../assets/UofTLogo.png';
-import Link from '../../../common/Link';
 
 const RhythmImage = styled.img`
     width: 27vh;
@@ -68,15 +69,12 @@ const RhythmContent = (
         to Apple Music or Spotify Premium, you and your friends can follow each other, share your favourite songs,
         albums, or playlists, and stream them right from Rhythm. If you like a song someone shares, save it directly to
         your Apple or Spotify library with the touch of a button.
-        <br />
-        <br />
+        <Break />
         I would love to make the repository public but I am unable due to a variety of reasons. But just know some of my
         best work lies in that repository so far!
-        <br />
-        <br />
+        <Break />
         Download on the <Link href="https://apps.apple.com/us/app/rhythm/id1499889444?ls=1">App Store</Link>!
-        <br />
-        <br />
+        <Break />
         <IframeWrapper>
             <StyledIframe
                 title="Rhythm - Cross Platform Music Sharing"
@@ -86,8 +84,7 @@ const RhythmContent = (
                 allowFullScreen
             />
         </IframeWrapper>
-        <br />
-        <br />
+        <Break />
     </div>
 );
 
@@ -99,95 +96,70 @@ const UofTContent = (
         Computer Interaction, Engineering Large Software Systems, Software Testing & Verification, Natural Language
         Processing My favourite part of the experience was working with smart classmates in the beautiful city of
         Toronto.
-        <br />
-        <br />
+        <Break />
         Below are a few of my favourite projects I have worked on throughout the years. The projects that are highest on
         the list are the most relevant.
-        <br />
-        <br />
+        <Break />
         <b>Note some repositories are hidden for academic integrity reasons but may be made available temporarily.</b>
-        <br />
-        <br />
-        <br />
-        <br />
+        <Break numBreaks={3} />
         <h3 className="header">Structured Data Capture</h3>
         <h4 className="subheader">6 Person Team</h4>
         <h5 className="subheader">CSC302 - Engineering Large Software Systems</h5>
-        <br />
+        <Break numBreaks={1} />
         The goal of this project was to apply software engineering data management practices to create a prototype
         reporting system that uses versioned, structured data to enable more efficient and timely collection of pandemic
         status data and thus improve information governance. For this project, we worked to implement the Standard Data
         Capture specification by creating a client and backend service. UI/UX design, system architecture, dev ops,
         testing, and project management tasks were involved when creating the product.
-        <br />
-        <br />
+        <Break />
         <Link href="https://github.com/csc302-fall-2020/proj-TBD">Repository</Link>
-        <br />
-        <br />
-        <br />
-        <br />
+        <Break numBreaks={3} />
         <h3 className="header">Medical School Cost Calculator</h3>
         <h4 className="subheader">6 Person Team</h4>
         <h5 className="subheader">CSC301 - Introduction to Software Engineering</h5>
-        <br />
+        <Break numBreaks={1} />
         For this project, we implemented a Medical School Cost Calculator that assists students applying to Medical
         School reduce their application costs. We developed the webapp for the University of Toronto Faculty of
         Medicine. The webapp continues to be actively maintained by students who take CSC301.
-        <br />
-        <br />
+        <Break />
         <Link href="https://med-school-calculator.web.app/">Website</Link>
-        <br />
-        <br />
-        <br />
-        <br />
+        <Break numBreaks={3} />
         <h3 className="header">Action Item Manager</h3>
         <h4 className="subheader">4 Person Team</h4>
         <h5 className="subheader">CSC309 - Programming on the Web</h5>
-        <br />
+        <Break numBreaks={1} />
         For this project, we were given the freedom to develop any web application we wanted as long as there was a
         backend, client, and user authentication involved. Our idea actually stemmed from a process observation made
         when I was interning at Loopio. There are multiple cases in a practical world where each member on a team has to
         complete the same task, but there are no formal tools for enterprise companies to achieve tracking individual
         progress on this task. Our Action Item Manager attempts to solve this problem.
-        <br />
-        <br />
+        <Break />
         <Link href="https://github.com/lucasgismondi/action-item-manager">Repository</Link>
-        <br />
+        <Break numBreaks={1} />
         <Link href="https://pacific-atoll-01415.herokuapp.com/login">Website</Link>
-        <br />
-        <br />
-        <br />
-        <br />
+        <Break numBreaks={3} />
         <h3 className="header">File System Implementation</h3>
         <h4 className="subheader">2 Person Team</h4>
         <h5 className="subheader">CSC369 - Operating Systems</h5>
-        <br />
+        <Break numBreaks={1} />
         Our task for this assignment was to design and implement a simple extent-based file system using C and FUSE.
         Commands like ls, stat, mkdir, rm were required to support multiple data blocks and extents.
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <Break numBreaks={3} />
         <h3 className="header">Political Persuasion Identifier</h3>
         <h4 className="subheader">Solo Project</h4>
         <h5 className="subheader">CSC401 - Natural Language Computing</h5>
-        <br />
+        <Break numBreaks={1} />
         For this assignment, we made use of python and scikit-learn to identify where someone was on the political
         spectrum based on their reddit comments on political subreddits. The project involved cleaning input data,
-        training models, and determining the features and models using p values. My algorithm had a 60% success rate.
-        <br />
-        <br />
-        <br />
-        <br />
+        training models, and determining the features and models using p-values.
+        <Break numBreaks={3} />
         <h3 className="header">Altera Guitar Hero</h3>
         <h4 className="subheader">2 Person Team</h4>
         <h5 className="subheader">CSC258 - Computer Organization</h5>
-        <br />
+        <Break numBreaks={1} />
         For this project, we were given the freedom to implement a graphical game using the De1-SoC Altera Development
         board. Our group implemented a Guitar Hero style game.
-        <br />
-        <br />
+        <Break />
     </div>
 );
 

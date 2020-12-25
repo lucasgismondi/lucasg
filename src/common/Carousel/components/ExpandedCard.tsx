@@ -6,6 +6,7 @@ import { isSafari, isBrowser, isMobileSafari } from 'react-device-detect';
 
 import { CardObject } from './Card';
 import Icon from 'common/Icon';
+import Break from 'common/Break';
 
 import { CARD_HEIGHT, CARD_WIDTH, ENTER_DURATION, EXIT_DURATION } from '../constants';
 
@@ -209,16 +210,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                                     exit={{ opacity: 0, transition: { duration: 0.2 } }}
                                 >
                                     {content}
-                                    {isMobileSafari && (
-                                        <>
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <br />
-                                        </>
-                                    )}
+                                    {isMobileSafari && <Break numBreaks={6} />}
                                 </TextContent>
                             </TextWrapper>
                         </InnerWrapper>

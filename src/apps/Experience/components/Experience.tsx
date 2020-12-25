@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Page from 'common/Page';
 import Carousel from 'common/Carousel';
 import Link from 'common/Link';
+import Break from 'common/Break';
 
 import loopioLogo from '../assets/loopioLogo.png';
 import aerialPhotoworksLogo from '../assets/aerialPhotoworksLogo.png';
@@ -48,8 +49,7 @@ const LoopioContent = (
         Canada. While at Loopio, I was able to work on meaningful features that made an impact on the business. The
         experience I gained was everything I could have asked for as I was given a broad range of responsibilities and
         had the opportunity to work with a very talented group of people.
-        <br />
-        <br />
+        <Break />
         Here is a{' '}
         <Link href="https://medium.com/loopio-product/my-experience-as-loopios-first-intern-ever-a891967777f4">
             link
@@ -77,7 +77,7 @@ const AerialPhotoworksContent = (
         <h3 className="header">Owner</h3>
         <h4 className="subheader">Aerial PhotoWorks | Aerial Photography Service</h4>
         <h5 className="subheader">05/2014 - 08/2018</h5>
-        <br />
+        <Break numBreaks={1} />
         Aerial PhotoWorks was an aerial photography and video company I started when I was 16. At the time, drone
         technology was beginning to trend, so I thought it would be a perfect time to take advantage of the opportunity
         and pair it with my interests. I secured $3000 in government funding, through the Summer Company program at the
@@ -89,11 +89,9 @@ const AerialPhotoworksContent = (
         </Link>
         ! During my journey, I was fortunate to provide my services to the Toronto Transit Commission (TTC), Telelatino
         Network (TLN), Superior Events Group, Richmond Hill and many others.
-        <br />
-        <br />
+        <Break />
         Here is a compilation I made of some of the work I did!
-        <br />
-        <br />
+        <Break />
         <IframeWrapper>
             <StyledIframe
                 title="Aerial PhotoWorks Compilation"
@@ -103,8 +101,7 @@ const AerialPhotoworksContent = (
                 allowFullScreen
             />
         </IframeWrapper>
-        <br />
-        <br />
+        <Break />
     </div>
 );
 

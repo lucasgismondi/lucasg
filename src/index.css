@@ -1,6 +1,7 @@
 html {
     scroll-behavior: smooth;
     font-size: min(2.5vh, 4.5vw);
+    line-height: 1.4em;
 }
 
 body {
@@ -36,6 +37,7 @@ h2 {
     color: white;
     font-style: italic;
     margin: 0;
+    line-height: 1.2em;
 }
 
 .subheader {
@@ -43,6 +45,12 @@ h2 {
     font-family: Aleo, serif;
     font-weight: normal;
     margin: 0;
+    line-height: 1.2em;
+}
+
+ul {
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 button {
