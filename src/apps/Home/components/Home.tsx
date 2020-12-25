@@ -22,6 +22,7 @@ const LucasImage = styled.img`
     width: ${isMobileOnly ? '7em' : '10em'};
     height: ${isMobileOnly ? '7em' : '10em'};
     margin: ${isMobileOnly ? '1em' : '2em'};
+    box-shadow: 0 0 3em black;
 `;
 
 const Description = styled.div`
