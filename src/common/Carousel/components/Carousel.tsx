@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactIdSwiperProps } from 'react-id-swiper';
+import { ReactIdSwiperProps, SwiperInstance } from 'react-id-swiper';
 import { isNull } from 'lodash';
 import Swiper from 'react-id-swiper';
 import styled from 'styled-components';
@@ -45,6 +45,7 @@ interface State {
     activeIndex: number;
     isCardExpanded: boolean;
     isNavigating: boolean;
+    swiper: SwiperInstance;
 }
 
 class Carousel extends React.Component<Props, State> {
@@ -80,8 +81,8 @@ class Carousel extends React.Component<Props, State> {
         activeIndex: 0,
         isCardExpanded: false,
         isNavigating: false,
+        swiper: null,
     };
-    swiper = null;
 
     params: ReactIdSwiperProps = {
         effect: 'coverflow',
@@ -91,12 +92,8 @@ class Carousel extends React.Component<Props, State> {
         keyboard: true,
         on: {
             transitionEnd: () => {
-                // @ts-ignore
-                this.swiper.childNodes[0].childNodes.forEach((card, i) => {
-                    if (card.className.includes('swiper-slide-active')) {
-                        this.setState({ activeIndex: i });
-                    }
-                });
+                const { swiper } = this.state;
+                if (swiper) this.setState({ activeIndex: swiper.activeIndex });
             },
         },
         coverflowEffect: {
@@ -111,24 +108,34 @@ class Carousel extends React.Component<Props, State> {
             type: 'bullets',
             clickable: true,
         },
+        getSwiper: (swiper) => this.setState({ swiper }),
     };
 
     handleSelect = async (index: number) => {
-        const { onCardToggle, cards } = this.props;
-        const { activeIndex } = this.state;
+        const { cards } = this.props;
+        const { activeIndex, swiper } = this.state;
+
+        const { link } = cards[index];
+        if (link) {
+            window.open(link, '_blank', 'noopener noreferrer');
+            return;
+        }
 
         if (activeIndex === index) {
-            const { link } = cards[index];
-            if (link) {
-                window.open(link, '_blank', 'noopener noreferrer');
-                return;
-            }
-
-            onCardToggle(true, true);
-            // await this set state to hide the card selected inside the Swiper component
-            await this.setState({ selectedIndex: index });
-            this.setState({ isCardExpanded: true });
+            this.handleOpen(index);
+        } else if (swiper) {
+            swiper.slideTo(index, 500);
+            setTimeout(async () => this.handleOpen(index), 500);
         }
+    };
+
+    handleOpen = async (index: number) => {
+        const { onCardToggle } = this.props;
+
+        onCardToggle(true, true);
+        // await this set state to hide the card selected inside the Swiper component
+        await this.setState({ selectedIndex: index });
+        this.setState({ isCardExpanded: true });
     };
 
     handleClose = () => {
@@ -187,7 +194,7 @@ class Carousel extends React.Component<Props, State> {
                                 <h1 className="header">{title}</h1>
                             </HeaderWrapper>
                             <SwiperWrapper>
-                                <Swiper {...this.params} initialSlide={activeIndex} ref={(o: any) => (this.swiper = o)}>
+                                <Swiper {...this.params} initialSlide={activeIndex}>
                                     {this.renderCards()}
                                 </Swiper>
                             </SwiperWrapper>

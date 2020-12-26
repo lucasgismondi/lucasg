@@ -1,5 +1,5 @@
 import React from 'react';
-import 'swiper/css/swiper.css';
+import 'react-id-swiper/lib/styles/css/swiper.css';
 import './App.css';
 import styled, { ThemeProvider } from 'styled-components';
 import smoothscroll from 'smoothscroll-polyfill';

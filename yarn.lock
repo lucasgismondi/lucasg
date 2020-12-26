@@ -2007,10 +2007,10 @@
     "@types/react-native" "*"
     csstype "^3.0.2"
 
-"@types/swiper@^5.4.1":
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/@types/swiper/-/swiper-5.4.1.tgz#4c19ef57aeb853c246eb6a73148b1b89b7ff3a6f"
-  integrity sha512-tEmsNfGIc20V+SoX0Cp/fzROWnk4meu/9bqYUxVHa+ALCESiD8LBLBrpEW8oXw7VebwZfRLh8Edmh5OcocbQ+w==
+"@types/swiper@^4.4.11":
+  version "4.4.11"
+  resolved "https://registry.yarnpkg.com/@types/swiper/-/swiper-4.4.11.tgz#f8f0860be9971c6b3666650b41aba3631b97f62f"
+  integrity sha512-o+tYRUyVK0g2k2NGOPdn671RHoKiVjzvt+aaPkKbf6lyDfKWmAKQ7ThCs1u+5GLBWAnJsHdE/aitykpms1P7jQ==
 
 "@types/tapable@*", "@types/tapable@^1.0.5":
   version "1.0.6"
@@ -4378,7 +4378,7 @@ dom-serializer@0:
     domelementtype "^2.0.1"
     entities "^2.0.0"
 
-dom7@^2.1.5:
+dom7@^2.1.3:
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/dom7/-/dom7-2.1.5.tgz#a79411017800b31d8400070cdaebbfc92c1f6377"
   integrity sha512-xnhwVgyOh3eD++/XGtH+5qBwYTgCm0aW91GFgPJ3XG+jlsRLyJivnbP0QmUBFhI+Oaz9FV0s7cxgXHezwOEBYA==
@@ -9437,10 +9437,10 @@ react-error-overlay@^6.0.8:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.8.tgz#474ed11d04fc6bda3af643447d85e9127ed6b5de"
   integrity sha512-HvPuUQnLp5H7TouGq3kzBeioJmXms1wHy9EGjz2OURWBp4qZO6AfGEcnxts1D/CbwPLRAgTMPCEgYhA3sEM4vw==
 
-react-id-swiper@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/react-id-swiper/-/react-id-swiper-4.0.0.tgz#eed938c5a4bf464a5cd7316a1bf6778581f47f2f"
-  integrity sha512-BFY8VQYgc1ECkT1Ek6MYSF8MADjWYZctdeRlMA202mjGcdjq1Bugfhg207KHTjGWKWZlY/7/nxFShqQo74RslA==
+react-id-swiper@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-id-swiper/-/react-id-swiper-2.3.0.tgz#6eba464e4f5b1762f9c98e1546aef10bb8bb56ee"
+  integrity sha512-eCYFXyPAaX2jX7rsCaN5w9CPEEKmgNUDnskeACBu8Ui8vbIwPqRFUBRHBG/48/ZCTGR8wI8Fk1Ox8kHfw+6x0g==
   dependencies:
     object-assign "^4.1.1"
 
@@ -10491,6 +10491,11 @@ sshpk@^1.7.0:
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
 
+ssr-window@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-1.0.1.tgz#30752a6a4666e7767f0b7e6aa6fc2fdbd0d9b369"
+  integrity sha512-dgFqB+f00LJTEgb6UXhx0h+SrG50LJvti2yMKMqAgzfUmUXZrLSv2fjULF7AWGwK25EXu8+smLR3jYsJQChPsg==
+
 ssr-window@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-2.0.0.tgz#98c301aef99523317f8d69618f0010791096efc4"
@@ -10832,13 +10837,13 @@ svgo@^1.0.0, svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-swiper@5.4:
-  version "5.4.5"
-  resolved "https://registry.yarnpkg.com/swiper/-/swiper-5.4.5.tgz#a350f654bf68426dbb651793824925512d223c0f"
-  integrity sha512-7QjA0XpdOmiMoClfaZ2lYN6ICHcMm72LXiY+NF4fQLFidigameaofvpjEEiTQuw3xm5eksG5hzkaRsjQX57vtA==
+swiper@4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-4.5.0.tgz#4d870bec4f5abe2fb259325849dd2641c9243c0d"
+  integrity sha512-jRCd/CGet9kaHwthHdd/sL/YU8CI157PWLyItnIcn/o/jP4haVky3zTF6f9F3JDpmQIw7jdWihISiYx0/oTHsg==
   dependencies:
-    dom7 "^2.1.5"
-    ssr-window "^2.0.0"
+    dom7 "^2.1.3"
+    ssr-window "^1.0.1"
 
 symbol-observable@1.2.0:
   version "1.2.0"
