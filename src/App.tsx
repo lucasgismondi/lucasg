@@ -5,7 +5,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import smoothscroll from 'smoothscroll-polyfill';
 import { isUndefined } from 'lodash';
 import { motion } from 'framer-motion';
-import { isMobileSafari } from 'react-device-detect';
+import { isMobileSafari, isSafari } from 'react-device-detect';
 
 import Home from 'apps/Home';
 import Experience from 'apps/Experience';
@@ -33,7 +33,7 @@ const BackgroundImage = styled.div`
     opacity: 0.5;
     height: 100%;
     width: 100vw;
-    ${!isMobileSafari && `background-image: url(${pattern});`}
+    ${!isMobileSafari && !isSafari && `background-image: url(${pattern});`}
     filter: brightness(0%);
     background-size: 100em auto;
     top: 0;

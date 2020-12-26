@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import { isSafari } from 'react-device-detect';
 
 const Wrapper = styled.div`
     position: relative;
@@ -25,7 +26,7 @@ const Page: React.FC<Props> = ({ id, showContents, isNavigating, children }) => 
             <AnimatePresence>
                 {(showContents || isNavigating) && (
                     <InnerWrapper
-                        initial={{ opacity: isNavigating ? 1 : 0 }}
+                        initial={{ opacity: isNavigating || isSafari ? 1 : 0 }}
                         animate={{ opacity: 1, transition: { delay: 0.3, duration: 0.5 } }}
                         exit={{ opacity: 0, transition: { delay: 0.5, duration: 0.5 } }}
                     >
