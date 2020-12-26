@@ -43,12 +43,12 @@ const IconLink = styled(Link)`
 interface Props {
     onCardToggle: Function;
     showContents: boolean;
-    isNavigating: boolean;
+    isScrollingDown: boolean;
 }
 
-const Contact: React.FC<Props> = ({ onCardToggle, showContents, isNavigating }) => {
+const Contact: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDown }) => {
     return (
-        <Page id="contact" showContents={showContents} isNavigating={isNavigating}>
+        <Page id="contact" showContents={showContents} isScrollingDown={isScrollingDown}>
             <Wrapper>
                 <h1 className="header">Contact</h1>
                 <ContactWrapper>

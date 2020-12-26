@@ -13,12 +13,12 @@ const LoopioBlogImage = styled.img`
 interface Props {
     onCardToggle: Function;
     showContents: boolean;
-    isNavigating: boolean;
+    isScrollingDown: boolean;
 }
 
-const Blog: React.FC<Props> = ({ onCardToggle, showContents, isNavigating }) => {
+const Blog: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDown }) => {
     return (
-        <Page id="blog" showContents={showContents} isNavigating={isNavigating}>
+        <Page id="blog" showContents={showContents} isScrollingDown={isScrollingDown}>
             <Carousel
                 id="blog"
                 title="Blog"

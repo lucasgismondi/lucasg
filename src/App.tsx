@@ -3,8 +3,6 @@ import 'react-id-swiper/lib/styles/css/swiper.css';
 import './App.css';
 import styled, { ThemeProvider } from 'styled-components';
 import smoothscroll from 'smoothscroll-polyfill';
-import { isUndefined } from 'lodash';
-import { motion } from 'framer-motion';
 import { isMobile, isSafari } from 'react-device-detect';
 
 import Home from 'apps/Home';
@@ -21,19 +19,19 @@ import pattern from 'pattern.png';
 
 smoothscroll.polyfill();
 
-const Wrapper = styled(motion.div)`
+const Wrapper = styled.div`
     position: absolute;
     width: 100vw;
-    height: fit-content;
+    height: 100vh;
     background-color: ${(props) => props.theme.background};
 `;
 
 const BackgroundImage = styled.div`
     position: absolute;
     opacity: 0.5;
-    height: 100%;
+    height: 100vh;
     width: 100vw;
-    ${!isMobile && !isSafari && `background-image: url(${pattern});`}
+    background-image: url(${pattern});
     filter: brightness(0%);
     background-size: 100em auto;
     top: 0;
@@ -42,12 +40,11 @@ const BackgroundImage = styled.div`
 interface State {
     startMobilePos: number;
     isTransitioning: boolean;
-    isNavigating: boolean;
     currentPage: number;
     isCardSelected: boolean; // false after expanded card close animation is complete
     isCardExpanded: boolean; // false after close button is pressed on expanded card
-    top: number;
     isScrolling: boolean;
+    isScrollingDown: boolean;
 }
 
 class App extends React.Component<{}, State> {
@@ -74,12 +71,11 @@ class App extends React.Component<{}, State> {
     state: State = {
         startMobilePos: 0,
         isTransitioning: false,
-        isNavigating: false,
         currentPage: 0,
         isCardSelected: false,
         isCardExpanded: false,
-        top: 0,
         isScrolling: false,
+        isScrollingDown: false,
     };
     pages = ['home', 'experience', 'projects', 'blog', 'contact'];
     pageNames = ['Home', 'Experience', 'Projects', 'Blog', 'Contact'];
@@ -91,9 +87,7 @@ class App extends React.Component<{}, State> {
             const currentPage = this.pages.indexOf(window.location.hash.slice(1));
 
             if (currentPage >= 0) {
-                this.setState({ isNavigating: true });
-                setTimeout(() => this.setState({ isNavigating: false }), 500);
-                this.scrollToIndex(currentPage, true);
+                this.scrollToIndex(currentPage);
             }
         }
     };
@@ -148,12 +142,12 @@ class App extends React.Component<{}, State> {
     };
 
     handleScroll = (direction: 'up' | 'down') => {
-        let { currentPage, isTransitioning, isNavigating, isCardSelected, isScrolling } = this.state;
-        if (isTransitioning || isNavigating || isCardSelected || isScrolling) {
+        let { currentPage, isTransitioning, isCardSelected, isScrolling } = this.state;
+        if (isTransitioning || isCardSelected || isScrolling) {
             return;
         } else {
-            this.setState({ isTransitioning: true });
-            setTimeout(() => this.setState({ isTransitioning: false }), 500);
+            this.setState({ isTransitioning: true, isScrollingDown: direction === 'down' });
+            setTimeout(() => this.setState({ isTransitioning: false }), 750);
         }
 
         if (
@@ -167,33 +161,20 @@ class App extends React.Component<{}, State> {
         this.scrollToIndex(currentPage);
     };
 
-    scrollToIndex = (index: number, isNavigating: boolean = false) => {
-        if (isNavigating) {
-            this.setState({ isNavigating: true, isCardSelected: false });
-            setTimeout(() => this.setState({ isNavigating: false }), 500);
-        }
+    scrollToIndex = (index: number) => {
         this.setState({ currentPage: index });
         const pageName = this.pages[index];
 
-        const parentWrapperTop = document.getElementById('parent-wrapper')?.getBoundingClientRect().top;
-        const sectionTop = document.getElementById(pageName)?.getBoundingClientRect().top;
-
-        if (isUndefined(sectionTop) || isUndefined(parentWrapperTop)) return;
-        const newTop = sectionTop - parentWrapperTop;
-        window.scrollTo({
-            top: newTop,
-            behavior: 'smooth',
-        });
         window.location.hash = `#${pageName}`;
     };
 
     render() {
-        const { top, currentPage, isCardExpanded, isNavigating } = this.state;
+        const { currentPage, isCardExpanded, isScrollingDown } = this.state;
 
         return (
             <ThemeProvider theme={DARK_THEME}>
-                <Wrapper id="parent-wrapper" initial={{ top }} animate={{ top, transition: { duration: 0.75 } }}>
-                    <BackgroundImage />
+                <Wrapper id="parent-wrapper">
+                    {!isMobile && !isSafari && <BackgroundImage />}
                     <Header pageNames={this.pageNames} scrollToIndex={this.scrollToIndex} />
                     <ScrollProgress
                         scrollToIndex={this.scrollToIndex}
@@ -204,27 +185,27 @@ class App extends React.Component<{}, State> {
                     <Home
                         onCardToggle={this.handleCardToggle}
                         showContents={currentPage === 0}
-                        isNavigating={isNavigating}
+                        isScrollingDown={isScrollingDown}
                     />
                     <Experience
                         onCardToggle={this.handleCardToggle}
                         showContents={currentPage === 1}
-                        isNavigating={isNavigating}
+                        isScrollingDown={isScrollingDown}
                     />
                     <Projects
                         onCardToggle={this.handleCardToggle}
                         showContents={currentPage === 2}
-                        isNavigating={isNavigating}
+                        isScrollingDown={isScrollingDown}
                     />
                     <Blog
                         onCardToggle={this.handleCardToggle}
                         showContents={currentPage === 3}
-                        isNavigating={isNavigating}
+                        isScrollingDown={isScrollingDown}
                     />
                     <Contact
                         onCardToggle={this.handleCardToggle}
                         showContents={currentPage === 4}
-                        isNavigating={isNavigating}
+                        isScrollingDown={isScrollingDown}
                     />
                 </Wrapper>
             </ThemeProvider>

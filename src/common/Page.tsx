@@ -1,15 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { isSafari } from 'react-device-detect';
 
-const Wrapper = styled.div`
-    position: relative;
+const Wrapper = styled(motion.div)`
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100vh;
     width: 100%;
 `;
 
 const InnerWrapper = styled(motion.div)`
+    position: absolute;
+    left: 0;
     height: 100%;
     width: 100%;
 `;
@@ -17,18 +20,18 @@ const InnerWrapper = styled(motion.div)`
 interface Props {
     id: string;
     showContents: boolean;
-    isNavigating: boolean;
+    isScrollingDown: boolean;
 }
 
-const Page: React.FC<Props> = ({ id, showContents, isNavigating, children }) => {
+const Page: React.FC<Props> = ({ id, showContents, children, isScrollingDown }) => {
     return (
         <Wrapper id={id}>
             <AnimatePresence>
-                {(showContents || isNavigating) && (
+                {showContents && (
                     <InnerWrapper
-                        initial={{ opacity: isNavigating || isSafari ? 1 : 0 }}
-                        animate={{ opacity: 1, transition: { delay: 0.3, duration: 0.5 } }}
-                        exit={{ opacity: 0, transition: { delay: 0.25, duration: 0 } }}
+                        initial={{ top: isScrollingDown ? '100vh' : '-100vh' }}
+                        animate={{ top: '0vh', transition: { duration: 0.75 } }}
+                        exit={{ top: isScrollingDown ? '-100vh' : '100vh', transition: { duration: 0.75 } }}
                     >
                         {children}
                     </InnerWrapper>

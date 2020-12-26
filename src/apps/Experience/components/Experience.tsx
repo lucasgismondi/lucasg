@@ -21,7 +21,7 @@ const AerialPhotoworksImage = styled.img`
 interface Props {
     onCardToggle: Function;
     showContents: boolean;
-    isNavigating: boolean;
+    isScrollingDown: boolean;
 }
 
 const LoopioContent = (
@@ -105,9 +105,9 @@ const AerialPhotoworksContent = (
     </div>
 );
 
-const Experience: React.FC<Props> = ({ onCardToggle, showContents, isNavigating }) => {
+const Experience: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDown }) => {
     return (
-        <Page id="experience" showContents={showContents} isNavigating={isNavigating}>
+        <Page id="experience" showContents={showContents} isScrollingDown={isScrollingDown}>
             <Carousel
                 id="experience"
                 title="Experience"

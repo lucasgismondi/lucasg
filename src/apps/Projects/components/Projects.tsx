@@ -21,7 +21,7 @@ const UofTImage = styled.img`
 interface Props {
     onCardToggle: Function;
     showContents: boolean;
-    isNavigating: boolean;
+    isScrollingDown: boolean;
 }
 
 const IframeWrapper = styled.div`
@@ -163,9 +163,9 @@ const UofTContent = (
     </div>
 );
 
-const Projects: React.FC<Props> = ({ onCardToggle, showContents, isNavigating }) => {
+const Projects: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDown }) => {
     return (
-        <Page id="projects" showContents={showContents} isNavigating={isNavigating}>
+        <Page id="projects" showContents={showContents} isScrollingDown={isScrollingDown}>
             <Carousel
                 id="projects"
                 title="Projects"

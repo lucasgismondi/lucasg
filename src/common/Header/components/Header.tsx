@@ -40,7 +40,7 @@ const IconLink = styled(Link)`
 
 interface Props {
     pageNames: string[];
-    scrollToIndex: (index: number, isNavigating: boolean) => void;
+    scrollToIndex: (index: number) => void;
 }
 
 const Header: React.FC<Props> = ({ pageNames, scrollToIndex }) => {
@@ -49,7 +49,7 @@ const Header: React.FC<Props> = ({ pageNames, scrollToIndex }) => {
     const handleScrollToIndex = (index: number = 0) => {
         setIsMenuOpen(false);
         NavigateEmitter.emit('navigating');
-        setTimeout(() => scrollToIndex(index, true), 500);
+        setTimeout(() => scrollToIndex(index), 500);
     };
 
     return (

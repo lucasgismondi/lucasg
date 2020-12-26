@@ -44,14 +44,11 @@ interface State {
     selectedIndex: number | null;
     activeIndex: number;
     isCardExpanded: boolean;
-    isNavigating: boolean;
     swiper: SwiperInstance;
 }
 
 class Carousel extends React.Component<Props, State> {
     componentDidMount() {
-        // fixing weird bug that keeps isNavigating to true after navigation
-        this.setState({ isNavigating: false });
         NavigateEmitter.addListener('navigating', this.handleNavigating);
         window.addEventListener('keydown', this.handleEnterKey);
     }
@@ -62,7 +59,7 @@ class Carousel extends React.Component<Props, State> {
     }
 
     handleNavigating = () => {
-        this.setState({ isNavigating: true, selectedIndex: null, isCardExpanded: false });
+        this.setState({ selectedIndex: null, isCardExpanded: false });
     };
 
     handleEnterKey = (e: KeyboardEvent) => {
@@ -80,7 +77,6 @@ class Carousel extends React.Component<Props, State> {
         selectedIndex: null,
         activeIndex: 0,
         isCardExpanded: false,
-        isNavigating: false,
         swiper: null,
     };
 
@@ -171,18 +167,16 @@ class Carousel extends React.Component<Props, State> {
 
     render() {
         const { id, title, cards } = this.props;
-        const { selectedIndex, isCardExpanded, activeIndex, isNavigating } = this.state;
+        const { selectedIndex, isCardExpanded, activeIndex } = this.state;
         return (
             <Wrapper>
-                {!isNavigating && (
-                    <ExpandedCard
-                        searchID={`${id}${selectedIndex}`}
-                        cardObject={isNull(selectedIndex) ? cards[0] : cards[selectedIndex]}
-                        onClose={this.handleClose}
-                        onExitComplete={this.handleExitComplete}
-                        show={isCardExpanded}
-                    />
-                )}
+                <ExpandedCard
+                    searchID={`${id}${selectedIndex}`}
+                    cardObject={isNull(selectedIndex) ? cards[0] : cards[selectedIndex]}
+                    onClose={this.handleClose}
+                    onExitComplete={this.handleExitComplete}
+                    show={isCardExpanded}
+                />
                 <AnimatePresence>
                     {!isCardExpanded && (
                         <ContentWrapper

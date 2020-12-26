@@ -35,12 +35,12 @@ const Description = styled.div`
 interface Props {
     onCardToggle: Function;
     showContents: boolean;
-    isNavigating: boolean;
+    isScrollingDown: boolean;
 }
 
-const Home: React.FC<Props> = ({ showContents, isNavigating }) => {
+const Home: React.FC<Props> = ({ showContents, isScrollingDown }) => {
     return (
-        <Page id="home" showContents={showContents} isNavigating={isNavigating}>
+        <Page id="home" showContents={showContents} isScrollingDown={isScrollingDown}>
             <InnerWrapper>
                 <LucasImage src={lucasImage} />
                 <h1 className="header">Lucas Gismondi</h1>
