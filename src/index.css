@@ -56,15 +56,14 @@ ul {
 button {
     border: none;
     background-color: Transparent;
-    outline: none;
     color: white;
     cursor: pointer;
     font-size: 1em;
     font-family: inherit;
 }
 
-:focus-visible {
-    outline: auto;
+.js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
 }
 
 code {
