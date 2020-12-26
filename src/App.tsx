@@ -30,7 +30,7 @@ const Wrapper = styled(motion.div)`
 
 const BackgroundImage = styled.div`
     position: absolute;
-    opacity: 0.3;
+    opacity: 0.5;
     height: 100%;
     width: 100vw;
     ${!isMobileSafari && `background-image: url(${pattern});`}
@@ -81,6 +81,9 @@ class App extends React.Component<{}, State> {
     };
     pages = ['home', 'experience', 'projects', 'blog', 'contact'];
     pageNames = ['Home', 'Experience', 'Projects', 'Blog', 'Contact'];
+    isTrackPad = false;
+    madeFirstScroll = false;
+    canScroll = true;
 
     setCurrentPage = () => {
         const hash = window.location.hash;
@@ -108,7 +111,13 @@ class App extends React.Component<{}, State> {
         if (isCardSelected) return;
         e.preventDefault();
 
-        if (Math.abs(e.deltaY) < 80) return; // To help with natural scrolling
+        // To help with natural scrolling
+        if (this.isTrackPad && Math.abs(e.deltaY) < 2) {
+            this.canScroll = true;
+            return;
+        }
+        if ((e.deltaX > 0 || e.deltaX < 0) && !this.madeFirstScroll) this.isTrackPad = true;
+        if (this.isTrackPad && !this.canScroll) return;
 
         const isScrollingUp = e.deltaY < 0;
         isScrollingUp ? this.handleScroll('up') : this.handleScroll('down');
@@ -146,7 +155,11 @@ class App extends React.Component<{}, State> {
             return;
         } else {
             this.setState({ isTransitioning: true });
-            setTimeout(() => this.setState({ isTransitioning: false }), 500);
+            this.canScroll = false;
+            setTimeout(() => {
+                this.setState({ isTransitioning: false });
+                this.madeFirstScroll = true;
+            }, 500);
         }
 
         if (

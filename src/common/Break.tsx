@@ -9,8 +9,8 @@ const Break: React.FC<Props> = ({ numBreaks = 2 }) => {
         <>
             {Array(numBreaks)
                 .fill(0)
-                .map((_) => (
-                    <br />
+                .map((_, i) => (
+                    <br key={i} />
                 ))}
         </>
     );
