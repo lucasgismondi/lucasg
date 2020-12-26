@@ -90,12 +90,12 @@ const RhythmContent = (
 
 const UofTContent = (
     <div>
-        Working towards my degree at UofT has been a very rewarding process. UofT has taught me how to solve problems
-        using First Principles Thinking which will likely prove to be the most important lesson in my career. Some of my
-        coursework included Algorithm Design & Analysis, Operating Systems, Algorithms & Data Structures, Human &
-        Computer Interaction, Engineering Large Software Systems, Software Testing & Verification, Natural Language
-        Processing My favourite part of the experience was working with smart classmates in the beautiful city of
-        Toronto.
+        Working towards my Computer Science degree at UofT has been a very rewarding process. UofT has taught me how to
+        solve problems using First Principles Thinking which will likely prove to be the most important lesson in my
+        career. Some of my coursework included Algorithm Design & Analysis, Operating Systems, Algorithms & Data
+        Structures, Human & Computer Interaction, Engineering Large Software Systems, Software Testing & Verification,
+        and Natural Language Processing. My favourite part of the experience was working with smart classmates in the
+        beautiful city of Toronto.
         <Break />
         Below are a few of my favourite projects I have worked on throughout the years. The projects that are highest on
         the list are the most relevant.
@@ -110,7 +110,7 @@ const UofTContent = (
         reporting system that uses versioned, structured data to enable more efficient and timely collection of pandemic
         status data and thus improve information governance. For this project, we worked to implement the Standard Data
         Capture specification by creating a client and backend service. UI/UX design, system architecture, dev ops,
-        testing, and project management tasks were involved when creating the product.
+        testing, and product management tasks were involved when creating the product.
         <Break />
         <Link href="https://github.com/csc302-fall-2020/proj-TBD">Repository</Link>
         <Break numBreaks={3} />
@@ -150,8 +150,8 @@ const UofTContent = (
         <h5 className="subheader">CSC401 - Natural Language Computing</h5>
         <Break numBreaks={1} />
         For this assignment, we made use of python and scikit-learn to identify where someone was on the political
-        spectrum based on their reddit comments on political subreddits. The project involved cleaning input data,
-        training models, and determining the features and models using p-values.
+        spectrum based on their reddit comments from political subreddits. The project involved cleaning input data,
+        training models, and determining the most effective features and models using p-values.
         <Break numBreaks={3} />
         <h3 className="header">Altera Guitar Hero</h3>
         <h4 className="subheader">2 Person Team</h4>
