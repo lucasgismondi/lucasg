@@ -25,9 +25,9 @@ interface Props {
 
 const Page: React.FC<Props> = ({ id, showContents, children, isScrollingDown }) => {
     return (
-        <Wrapper id={id}>
-            <AnimatePresence>
-                {showContents && (
+        <AnimatePresence>
+            {showContents && (
+                <Wrapper id={id}>
                     <InnerWrapper
                         initial={{ top: isScrollingDown ? '100vh' : '-100vh' }}
                         animate={{ top: '0vh', transition: { duration: 0.75 } }}
@@ -35,9 +35,9 @@ const Page: React.FC<Props> = ({ id, showContents, children, isScrollingDown }) 
                     >
                         {children}
                     </InnerWrapper>
-                )}
-            </AnimatePresence>
-        </Wrapper>
+                </Wrapper>
+            )}
+        </AnimatePresence>
     );
 };
 

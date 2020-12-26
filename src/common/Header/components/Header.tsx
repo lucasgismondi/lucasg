@@ -49,7 +49,7 @@ const Header: React.FC<Props> = ({ pageNames, scrollToIndex }) => {
     const handleScrollToIndex = (index: number = 0) => {
         setIsMenuOpen(false);
         NavigateEmitter.emit('navigating');
-        setTimeout(() => scrollToIndex(index), 500);
+        setTimeout(() => scrollToIndex(index), 750);
     };
 
     return (

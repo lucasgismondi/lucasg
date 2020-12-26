@@ -146,7 +146,7 @@ class App extends React.Component<{}, State> {
         if (isTransitioning || isCardSelected || isScrolling) {
             return;
         } else {
-            this.setState({ isTransitioning: true, isScrollingDown: direction === 'down' });
+            this.setState({ isTransitioning: true });
             setTimeout(() => this.setState({ isTransitioning: false }), 750);
         }
 
@@ -161,7 +161,11 @@ class App extends React.Component<{}, State> {
         this.scrollToIndex(currentPage);
     };
 
-    scrollToIndex = (index: number) => {
+    scrollToIndex = async (index: number) => {
+        const { currentPage } = this.state;
+        if (currentPage === index) return;
+
+        await this.setState({ isScrollingDown: index > currentPage });
         this.setState({ currentPage: index });
         const pageName = this.pages[index];
 

@@ -9,8 +9,6 @@ import Card, { CardObject } from './Card';
 import ExpandedCard from './ExpandedCard';
 import { EXIT_DURATION } from '../constants';
 
-import { NavigateEmitter } from 'common/Header/components/Header';
-
 const Wrapper = styled.div`
     height: 100%;
     width: 100%;
@@ -49,18 +47,12 @@ interface State {
 
 class Carousel extends React.Component<Props, State> {
     componentDidMount() {
-        NavigateEmitter.addListener('navigating', this.handleNavigating);
         window.addEventListener('keydown', this.handleEnterKey);
     }
 
     componentWillUnmount() {
-        NavigateEmitter.removeListener('navigating', this.handleNavigating);
         window.removeEventListener('keydown', this.handleEnterKey);
     }
-
-    handleNavigating = () => {
-        this.setState({ selectedIndex: null, isCardExpanded: false });
-    };
 
     handleEnterKey = (e: KeyboardEvent) => {
         let activeElement = document.activeElement;

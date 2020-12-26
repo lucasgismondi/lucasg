@@ -7,6 +7,7 @@ import { isSafari, isBrowser, isMobile } from 'react-device-detect';
 import { CardObject } from './Card';
 import Icon from 'common/Icon';
 import Break from 'common/Break';
+import { NavigateEmitter } from 'common/Header/components/Header';
 
 import { CARD_HEIGHT, CARD_WIDTH, ENTER_DURATION, EXIT_DURATION } from '../constants';
 
@@ -115,26 +116,34 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
         if (element) initialTop = element.getBoundingClientRect().top;
     }
 
-    useEffect(() => {
-        if (isSafari && isBrowser) {
-            const element = document.querySelector('#parent-wrapper');
-            // @ts-ignore
-            disableBodyScroll(element);
-
-            return () => {
-                // @ts-ignore
-                enableBodyScroll(element);
-            };
-        }
-    }, []);
-
-    const handleClose = async () => {
+    const handleClose = React.useCallback(async () => {
         const element = document.getElementById('expanded-card-content');
         if (element) await setExitTop(initialTop - element.getBoundingClientRect().top);
         await setIsClosing(true);
         onClose();
         setIsClosing(false);
-    };
+    }, [onClose]);
+
+    useEffect(() => {
+        if (isSafari && isBrowser) {
+            const element = document.querySelector('#parent-wrapper');
+            // @ts-ignore
+            disableBodyScroll(element);
+            NavigateEmitter.addListener('navigating', handleClose);
+
+            return () => {
+                // @ts-ignore
+                enableBodyScroll(element);
+                NavigateEmitter.removeListener('navigating', handleClose);
+            };
+        } else {
+            NavigateEmitter.addListener('navigating', handleClose);
+
+            return () => {
+                NavigateEmitter.removeListener('navigating', handleClose);
+            };
+        }
+    }, [handleClose]);
 
     const { ImageComponent, imageBackgroundColor, title, subTitle, imageTextColor, content } = cardObject;
     return (
