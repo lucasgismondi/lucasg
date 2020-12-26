@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.c63e55ba.chunk.css",
-    "main.js": "/static/js/main.cc2909f9.chunk.js",
-    "main.js.map": "/static/js/main.cc2909f9.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.46184f7c.js",
-    "runtime-main.js.map": "/static/js/runtime-main.46184f7c.js.map",
-    "static/css/2.cd35a58e.chunk.css": "/static/css/2.cd35a58e.chunk.css",
-    "static/js/2.efe671bb.chunk.js": "/static/js/2.efe671bb.chunk.js",
-    "static/js/2.efe671bb.chunk.js.map": "/static/js/2.efe671bb.chunk.js.map",
-    "static/js/3.6bbcad59.chunk.js": "/static/js/3.6bbcad59.chunk.js",
-    "static/js/3.6bbcad59.chunk.js.map": "/static/js/3.6bbcad59.chunk.js.map",
+    "main.js": "/static/js/main.d07510c1.chunk.js",
+    "main.js.map": "/static/js/main.d07510c1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.2945f91f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.2945f91f.js.map",
+    "static/css/2.caac2a96.chunk.css": "/static/css/2.caac2a96.chunk.css",
+    "static/js/2.bda682b5.chunk.js": "/static/js/2.bda682b5.chunk.js",
+    "static/js/2.bda682b5.chunk.js.map": "/static/js/2.bda682b5.chunk.js.map",
+    "static/js/3.8311e99b.chunk.js": "/static/js/3.8311e99b.chunk.js",
+    "static/js/3.8311e99b.chunk.js.map": "/static/js/3.8311e99b.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/2.cd35a58e.chunk.css.map": "/static/css/2.cd35a58e.chunk.css.map",
+    "static/css/2.caac2a96.chunk.css.map": "/static/css/2.caac2a96.chunk.css.map",
     "static/css/main.c63e55ba.chunk.css.map": "/static/css/main.c63e55ba.chunk.css.map",
-    "static/js/2.efe671bb.chunk.js.LICENSE.txt": "/static/js/2.efe671bb.chunk.js.LICENSE.txt",
+    "static/js/2.bda682b5.chunk.js.LICENSE.txt": "/static/js/2.bda682b5.chunk.js.LICENSE.txt",
     "static/media/LUCAS GISMONDI - RESUME.05d33586.pdf": "/static/media/LUCAS GISMONDI - RESUME.05d33586.pdf",
     "static/media/UofTLogo.0ebba934.png": "/static/media/UofTLogo.0ebba934.png",
     "static/media/aerialPhotoworksLogo.2515735e.png": "/static/media/aerialPhotoworksLogo.2515735e.png",
@@ -23,10 +23,10 @@
     "static/media/pattern.3908c09e.png": "/static/media/pattern.3908c09e.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.46184f7c.js",
-    "static/css/2.cd35a58e.chunk.css",
-    "static/js/2.efe671bb.chunk.js",
+    "static/js/runtime-main.2945f91f.js",
+    "static/css/2.caac2a96.chunk.css",
+    "static/js/2.bda682b5.chunk.js",
     "static/css/main.c63e55ba.chunk.css",
-    "static/js/main.cc2909f9.chunk.js"
+    "static/js/main.d07510c1.chunk.js"
   ]
 }
