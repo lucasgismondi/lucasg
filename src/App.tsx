@@ -47,6 +47,7 @@ interface State {
     isCardSelected: boolean; // false after expanded card close animation is complete
     isCardExpanded: boolean; // false after close button is pressed on expanded card
     top: number;
+    isScrolling: boolean;
 }
 
 class App extends React.Component<{}, State> {
@@ -78,12 +79,11 @@ class App extends React.Component<{}, State> {
         isCardSelected: false,
         isCardExpanded: false,
         top: 0,
+        isScrolling: false,
     };
     pages = ['home', 'experience', 'projects', 'blog', 'contact'];
     pageNames = ['Home', 'Experience', 'Projects', 'Blog', 'Contact'];
-    isTrackPad = false;
-    madeFirstScroll = false;
-    canScroll = true;
+    isScrollingTimeout = 0;
 
     setCurrentPage = () => {
         const hash = window.location.hash;
@@ -106,21 +106,19 @@ class App extends React.Component<{}, State> {
         this.scrollToIndex(currentPage);
     };
 
-    handleWheelScroll = (e: WheelEvent) => {
+    handleWheelScroll = async (e: WheelEvent) => {
         const { isCardSelected } = this.state;
         if (isCardSelected) return;
         e.preventDefault();
 
-        // To help with natural scrolling
-        if (this.isTrackPad && Math.abs(e.deltaY) < 2) {
-            this.canScroll = true;
-            return;
-        }
-        if ((e.deltaX > 0 || e.deltaX < 0) && !this.madeFirstScroll) this.isTrackPad = true;
-        if (this.isTrackPad && !this.canScroll) return;
-
         const isScrollingUp = e.deltaY < 0;
         isScrollingUp ? this.handleScroll('up') : this.handleScroll('down');
+
+        // To help with natural scrolling
+        window.clearTimeout(this.isScrollingTimeout);
+        await this.setState({ isScrolling: true });
+
+        this.isScrollingTimeout = setTimeout(() => this.setState({ isScrolling: false }), 66);
     };
 
     handleTouchStart = (e: TouchEvent) => this.setState({ startMobilePos: e.touches[0].clientY });
@@ -150,16 +148,12 @@ class App extends React.Component<{}, State> {
     };
 
     handleScroll = (direction: 'up' | 'down') => {
-        let { currentPage, isTransitioning, isNavigating, isCardSelected } = this.state;
-        if (isTransitioning || isNavigating || isCardSelected) {
+        let { currentPage, isTransitioning, isNavigating, isCardSelected, isScrolling } = this.state;
+        if (isTransitioning || isNavigating || isCardSelected || isScrolling) {
             return;
         } else {
             this.setState({ isTransitioning: true });
-            this.canScroll = false;
-            setTimeout(() => {
-                this.setState({ isTransitioning: false });
-                this.madeFirstScroll = true;
-            }, 500);
+            setTimeout(() => this.setState({ isTransitioning: false }), 500);
         }
 
         if (
