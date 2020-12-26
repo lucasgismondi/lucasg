@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import { isSafari, isBrowser, isMobileSafari } from 'react-device-detect';
+import { isSafari, isBrowser, isMobile } from 'react-device-detect';
 
 import { CardObject } from './Card';
 import Icon from 'common/Icon';
@@ -210,7 +210,7 @@ const ExpandedCard: React.FC<Props> = ({ searchID, cardObject, onClose, onExitCo
                                     exit={{ opacity: 0, transition: { duration: 0.2 } }}
                                 >
                                     {content}
-                                    {isMobileSafari && <Break numBreaks={6} />}
+                                    {isMobile && <Break numBreaks={6} />}
                                 </TextContent>
                             </TextWrapper>
                         </InnerWrapper>
