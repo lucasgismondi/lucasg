@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Card, { CardObject } from './Card';
 import ExpandedCard from './ExpandedCard';
 import { EXIT_DURATION } from '../constants';
+import { NavigateEmitter } from 'common/Header/components/Header';
 
 const Wrapper = styled.div`
     height: 100%;
@@ -43,16 +44,26 @@ interface State {
     activeIndex: number;
     isCardExpanded: boolean;
     swiper: SwiperInstance;
+    hideExpandedCardCompletely: boolean;
 }
 
 class Carousel extends React.Component<Props, State> {
     componentDidMount() {
+        NavigateEmitter.addListener('navigating', this.handleNavigating);
         window.addEventListener('keydown', this.handleEnterKey);
     }
 
     componentWillUnmount() {
+        NavigateEmitter.removeListener('navigating', this.handleNavigating);
         window.removeEventListener('keydown', this.handleEnterKey);
     }
+
+    handleNavigating = () => {
+        this.handleClose();
+        this.handleExitComplete();
+        this.setState({ hideExpandedCardCompletely: true });
+        setTimeout(() => this.setState({ hideExpandedCardCompletely: false }), 250);
+    };
 
     handleEnterKey = (e: KeyboardEvent) => {
         let activeElement = document.activeElement;
@@ -70,6 +81,7 @@ class Carousel extends React.Component<Props, State> {
         activeIndex: 0,
         isCardExpanded: false,
         swiper: null,
+        hideExpandedCardCompletely: false,
     };
 
     params: ReactIdSwiperProps = {
@@ -159,16 +171,18 @@ class Carousel extends React.Component<Props, State> {
 
     render() {
         const { id, title, cards } = this.props;
-        const { selectedIndex, isCardExpanded, activeIndex } = this.state;
+        const { selectedIndex, isCardExpanded, activeIndex, hideExpandedCardCompletely } = this.state;
         return (
             <Wrapper>
-                <ExpandedCard
-                    searchID={`${id}${selectedIndex}`}
-                    cardObject={isNull(selectedIndex) ? cards[0] : cards[selectedIndex]}
-                    onClose={this.handleClose}
-                    onExitComplete={this.handleExitComplete}
-                    show={isCardExpanded}
-                />
+                {!hideExpandedCardCompletely && (
+                    <ExpandedCard
+                        searchID={`${id}${selectedIndex}`}
+                        cardObject={isNull(selectedIndex) ? cards[0] : cards[selectedIndex]}
+                        onClose={this.handleClose}
+                        onExitComplete={this.handleExitComplete}
+                        show={isCardExpanded}
+                    />
+                )}
                 <AnimatePresence>
                     {!isCardExpanded && (
                         <ContentWrapper
