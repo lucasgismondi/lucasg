@@ -4,6 +4,7 @@ import { isMobileOnly } from 'react-device-detect';
 
 import Page from 'common/Page';
 import Link from 'common/Link';
+import BodyText from 'common/BodyText';
 
 import lucasImage from '../assets/lucasProfilePhoto.jpeg';
 import resume from '../assets/LUCAS GISMONDI - RESUME.pdf';
@@ -25,11 +26,10 @@ const LucasImage = styled.img`
     box-shadow: 0 0 3em black;
 `;
 
-const Description = styled.div`
+const Description = styled(BodyText)`
     margin: ${isMobileOnly ? '1em 3em 0 3em' : '2em 3em 2em 3em'};
     text-align: justify;
     max-width: 1000px;
-    font-size: 0.9em;
 `;
 
 interface Props {
