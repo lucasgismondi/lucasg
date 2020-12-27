@@ -36,11 +36,17 @@ interface Props {
     onCardToggle: Function;
     showContents: boolean;
     isScrollingDown: boolean;
+    isInitialTransition: boolean;
 }
 
-const Home: React.FC<Props> = ({ showContents, isScrollingDown }) => {
+const Home: React.FC<Props> = ({ showContents, isScrollingDown, isInitialTransition }) => {
     return (
-        <Page id="home" showContents={showContents} isScrollingDown={isScrollingDown}>
+        <Page
+            id="home"
+            showContents={showContents}
+            isScrollingDown={isScrollingDown}
+            isInitialTransition={isInitialTransition}
+        >
             <InnerWrapper>
                 <LucasImage src={lucasImage} />
                 <h1 className="header">Lucas Gismondi</h1>

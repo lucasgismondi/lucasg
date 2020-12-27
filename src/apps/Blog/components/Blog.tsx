@@ -14,11 +14,17 @@ interface Props {
     onCardToggle: Function;
     showContents: boolean;
     isScrollingDown: boolean;
+    isInitialTransition: boolean;
 }
 
-const Blog: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDown }) => {
+const Blog: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDown, isInitialTransition }) => {
     return (
-        <Page id="blog" showContents={showContents} isScrollingDown={isScrollingDown}>
+        <Page
+            id="blog"
+            showContents={showContents}
+            isScrollingDown={isScrollingDown}
+            isInitialTransition={isInitialTransition}
+        >
             <Carousel
                 id="blog"
                 title="Blog"

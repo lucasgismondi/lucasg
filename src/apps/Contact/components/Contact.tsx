@@ -44,11 +44,17 @@ interface Props {
     onCardToggle: Function;
     showContents: boolean;
     isScrollingDown: boolean;
+    isInitialTransition: boolean;
 }
 
-const Contact: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDown }) => {
+const Contact: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDown, isInitialTransition }) => {
     return (
-        <Page id="contact" showContents={showContents} isScrollingDown={isScrollingDown}>
+        <Page
+            id="contact"
+            showContents={showContents}
+            isScrollingDown={isScrollingDown}
+            isInitialTransition={isInitialTransition}
+        >
             <Wrapper>
                 <h1 className="header">Contact</h1>
                 <ContactWrapper>

@@ -12,6 +12,7 @@ const Wrapper = styled(motion.div)`
 
 const InnerWrapper = styled(motion.div)`
     position: absolute;
+    top: 0;
     left: 0;
     height: 100%;
     width: 100%;
@@ -21,16 +22,21 @@ interface Props {
     id: string;
     showContents: boolean;
     isScrollingDown: boolean;
+    isInitialTransition: boolean;
 }
 
-const Page: React.FC<Props> = ({ id, showContents, children, isScrollingDown }) => {
+const Page: React.FC<Props> = ({ id, showContents, children, isScrollingDown, isInitialTransition }) => {
     return (
         <AnimatePresence>
             {showContents && (
                 <Wrapper id={id}>
                     <InnerWrapper
-                        initial={{ top: isScrollingDown ? '100vh' : '-100vh' }}
-                        animate={{ top: '0vh', transition: { duration: 0.75 } }}
+                        initial={isInitialTransition ? { opacity: 0 } : { top: isScrollingDown ? '100vh' : '-100vh' }}
+                        animate={
+                            isInitialTransition
+                                ? { opacity: 1, transition: { duration: 0.75 } }
+                                : { top: '0vh', transition: { duration: 0.75 } }
+                        }
                         exit={{ top: isScrollingDown ? '-100vh' : '100vh', transition: { duration: 0.75 } }}
                     >
                         {children}

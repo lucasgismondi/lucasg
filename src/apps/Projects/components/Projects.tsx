@@ -22,6 +22,7 @@ interface Props {
     onCardToggle: Function;
     showContents: boolean;
     isScrollingDown: boolean;
+    isInitialTransition: boolean;
 }
 
 const IframeWrapper = styled.div`
@@ -163,9 +164,14 @@ const UofTContent = (
     </div>
 );
 
-const Projects: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDown }) => {
+const Projects: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDown, isInitialTransition }) => {
     return (
-        <Page id="projects" showContents={showContents} isScrollingDown={isScrollingDown}>
+        <Page
+            id="projects"
+            showContents={showContents}
+            isScrollingDown={isScrollingDown}
+            isInitialTransition={isInitialTransition}
+        >
             <Carousel
                 id="projects"
                 title="Projects"

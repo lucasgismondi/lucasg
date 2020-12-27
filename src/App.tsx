@@ -45,6 +45,7 @@ interface State {
     isCardExpanded: boolean; // false after close button is pressed on expanded card
     isScrolling: boolean;
     isScrollingDown: boolean;
+    isInitialTransition: boolean;
 }
 
 class App extends React.Component<{}, State> {
@@ -71,11 +72,12 @@ class App extends React.Component<{}, State> {
     state: State = {
         startMobilePos: 0,
         isTransitioning: false,
-        currentPage: 0,
+        currentPage: -1,
         isCardSelected: false,
         isCardExpanded: false,
         isScrolling: false,
         isScrollingDown: false,
+        isInitialTransition: true,
     };
     pages = ['home', 'experience', 'projects', 'blog', 'contact'];
     pageNames = ['Home', 'Experience', 'Projects', 'Blog', 'Contact'];
@@ -83,12 +85,17 @@ class App extends React.Component<{}, State> {
 
     setCurrentPage = () => {
         const hash = window.location.hash;
+        setTimeout(() => this.setState({ isInitialTransition: false }), 750);
         if (hash) {
             const currentPage = this.pages.indexOf(window.location.hash.slice(1));
 
             if (currentPage >= 0) {
                 this.scrollToIndex(currentPage);
+            } else {
+                this.scrollToIndex(0);
             }
+        } else {
+            this.scrollToIndex(0);
         }
     };
 
@@ -173,7 +180,7 @@ class App extends React.Component<{}, State> {
     };
 
     render() {
-        const { currentPage, isCardExpanded, isScrollingDown } = this.state;
+        const { currentPage, isCardExpanded, isScrollingDown, isInitialTransition } = this.state;
 
         return (
             <ThemeProvider theme={DARK_THEME}>
@@ -186,31 +193,40 @@ class App extends React.Component<{}, State> {
                         pages={this.pages}
                         isCardExpanded={isCardExpanded}
                     />
-                    <Home
-                        onCardToggle={this.handleCardToggle}
-                        showContents={currentPage === 0}
-                        isScrollingDown={isScrollingDown}
-                    />
-                    <Experience
-                        onCardToggle={this.handleCardToggle}
-                        showContents={currentPage === 1}
-                        isScrollingDown={isScrollingDown}
-                    />
-                    <Projects
-                        onCardToggle={this.handleCardToggle}
-                        showContents={currentPage === 2}
-                        isScrollingDown={isScrollingDown}
-                    />
-                    <Blog
-                        onCardToggle={this.handleCardToggle}
-                        showContents={currentPage === 3}
-                        isScrollingDown={isScrollingDown}
-                    />
-                    <Contact
-                        onCardToggle={this.handleCardToggle}
-                        showContents={currentPage === 4}
-                        isScrollingDown={isScrollingDown}
-                    />
+                    {currentPage >= 0 && (
+                        <>
+                            <Home
+                                onCardToggle={this.handleCardToggle}
+                                showContents={currentPage === 0}
+                                isScrollingDown={isScrollingDown}
+                                isInitialTransition={isInitialTransition}
+                            />
+                            <Experience
+                                onCardToggle={this.handleCardToggle}
+                                showContents={currentPage === 1}
+                                isScrollingDown={isScrollingDown}
+                                isInitialTransition={isInitialTransition}
+                            />
+                            <Projects
+                                onCardToggle={this.handleCardToggle}
+                                showContents={currentPage === 2}
+                                isScrollingDown={isScrollingDown}
+                                isInitialTransition={isInitialTransition}
+                            />
+                            <Blog
+                                onCardToggle={this.handleCardToggle}
+                                showContents={currentPage === 3}
+                                isScrollingDown={isScrollingDown}
+                                isInitialTransition={isInitialTransition}
+                            />
+                            <Contact
+                                onCardToggle={this.handleCardToggle}
+                                showContents={currentPage === 4}
+                                isScrollingDown={isScrollingDown}
+                                isInitialTransition={isInitialTransition}
+                            />
+                        </>
+                    )}
                 </Wrapper>
             </ThemeProvider>
         );
