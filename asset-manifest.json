@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.f8bc397f.chunk.css",
-    "main.js": "/static/js/main.1dcc9ee0.chunk.js",
-    "main.js.map": "/static/js/main.1dcc9ee0.chunk.js.map",
+    "main.css": "/static/css/main.e6081131.chunk.css",
+    "main.js": "/static/js/main.e0d12a29.chunk.js",
+    "main.js.map": "/static/js/main.e0d12a29.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.2945f91f.js",
     "runtime-main.js.map": "/static/js/runtime-main.2945f91f.js.map",
     "static/css/2.caac2a96.chunk.css": "/static/css/2.caac2a96.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.8311e99b.chunk.js.map": "/static/js/3.8311e99b.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.caac2a96.chunk.css.map": "/static/css/2.caac2a96.chunk.css.map",
-    "static/css/main.f8bc397f.chunk.css.map": "/static/css/main.f8bc397f.chunk.css.map",
+    "static/css/main.e6081131.chunk.css.map": "/static/css/main.e6081131.chunk.css.map",
     "static/js/2.169f7313.chunk.js.LICENSE.txt": "/static/js/2.169f7313.chunk.js.LICENSE.txt",
     "static/media/LUCAS GISMONDI - RESUME.05d33586.pdf": "/static/media/LUCAS GISMONDI - RESUME.05d33586.pdf",
     "static/media/UofTLogo.0ebba934.png": "/static/media/UofTLogo.0ebba934.png",
@@ -26,7 +26,7 @@
     "static/js/runtime-main.2945f91f.js",
     "static/css/2.caac2a96.chunk.css",
     "static/js/2.169f7313.chunk.js",
-    "static/css/main.f8bc397f.chunk.css",
-    "static/js/main.1dcc9ee0.chunk.js"
+    "static/css/main.e6081131.chunk.css",
+    "static/js/main.e0d12a29.chunk.js"
   ]
 }
