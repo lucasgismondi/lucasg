@@ -164,7 +164,7 @@ class Carousel extends React.Component<Props, State> {
                 onClick={() => this.handleSelect(i)}
                 show={selectedIndex === i}
                 tabIndex={activeIndex === i ? 0 : undefined}
-                hasClickMeAnimation={false}
+                hasClickMeAnimation={i === 0}
             />
         ));
     };

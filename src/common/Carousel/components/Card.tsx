@@ -20,12 +20,14 @@ const Wrapper = styled(motion.div)<{ show: boolean; backgroundColor: string }>`
     overflow: hidden;
 `;
 
-const ClickMeWrapper = styled(motion.div)`
+const ClickMeWrapper = styled(motion.div)<{ color: string }>`
+    color: ${(props) => props.color};
     position: absolute;
     top: 5em;
     display: flex;
     justify-content: center;
     width: 100%;
+    font-size: 0.9em;
 `;
 
 const HeadingWrapper = styled.div`
@@ -75,8 +77,14 @@ const Card: React.FC<Props> = ({ className, id, cardObject, onClick, show, tabIn
             tabIndex={tabIndex}
         >
             {hasClickMeAnimation && !didClickOnce && (
-                <ClickMeWrapper animate={{ opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
-                    <b>Click Me!</b>
+                <ClickMeWrapper
+                    animate={{ opacity: [0, 1, 0] }}
+                    transition={{ repeat: Infinity, duration: 3 }}
+                    color={imageTextColor}
+                >
+                    <b>
+                        <i>click to view more</i>
+                    </b>
                 </ClickMeWrapper>
             )}
             {ImageComponent}
