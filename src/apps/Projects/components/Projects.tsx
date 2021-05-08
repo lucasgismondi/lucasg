@@ -43,7 +43,7 @@ const StyledIframe = styled.iframe`
 const RhythmContent = (
     <div>
         <h3 className="header">
-            <Link href="https://www.getrhythmapp.com">Rhythm</Link> | Cross Platform Music Sharing
+            <Link href="https://sites.google.com/view/getrhythmapp/home">Rhythm</Link> | Cross Platform Music Sharing
         </h3>
         <BodyText>
             <ul>
@@ -76,7 +76,7 @@ const RhythmContent = (
             I would love to make the repository public but I am unable due to a variety of reasons. But just know some
             of my best work lies in that repository so far!
             <Break />
-            Download on the <Link href="https://apps.apple.com/us/app/rhythm/id1499889444?ls=1">App Store</Link>!
+            Note: Rhythm is no longer available on the iOS App Store as of May 7th, 2021.
             <Break />
         </BodyText>
         <IframeWrapper>

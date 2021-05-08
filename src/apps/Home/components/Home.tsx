@@ -55,8 +55,8 @@ const Home: React.FC<Props> = ({ showContents, isScrollingDown, isInitialTransit
                     &emsp; In May of 2018, I started my career as a Full-Stack Software Developer at Loopio. Since then,
                     I have built a large scale social network for music, called Rhythm, and have deployed multiple web
                     applications that deal with problems such as COVID-19 data capture and medical school application
-                    costs. In April of 2021, I will be graduating from the University of Toronto, with an Honours
-                    Bachelor of Science, in the Computer Science Specialist program.
+                    costs. In May of 2021, I graduated from the University of Toronto with an Honours
+                    Bachelor of Science in the Computer Science Specialist program.
                 </Description>
                 <Link href={resume} textColor="white">
                     <h4>View Resume</h4>
