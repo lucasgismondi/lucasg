@@ -28,13 +28,19 @@ interface Props {
 
 const LoopioContent = (
     <div>
-        <h3 className="header">Full Stack Software Developer (Intern)</h3>
+        <h3 className="header">Full Stack Software Developer</h3>
         <h4 className="subheader">
             <Link href="https://www.loopio.com">Loopio Inc.</Link> | RFP Management Software
         </h4>
-        <h5 className="subheader">05/2018 - 08/2019</h5>
+        <h5 className="subheader">05/2018 - 08/2019, 06/2021 - Current</h5>
         <BodyText>
             <ul>
+                <li>
+                    Refactored Loopio build process to allow support for Typescript. Introduced Typescript to the engineering team through a Lunch & Learn presentation.
+                </li>
+                <li>
+                    Developed a new PDF import system for Loopio’s Project Import feature.
+                </li>
                 <li>
                     Developed a Chrome Extension to assist with importing content into the customer library from
                     anywhere on the web. Installations surpassed competitor solution within 5 days of being on the
@@ -125,7 +131,7 @@ const Experience: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDo
                 title="Experience"
                 cards={[
                     {
-                        title: 'Full Stack Software Developer (Intern)',
+                        title: 'Full Stack Software Developer',
                         subTitle: 'RFP Management Software',
                         ImageComponent: <LoopioImage src={loopioLogo} alt="loopio-logo" />,
                         imageBackgroundColor: '#02D5CC',
