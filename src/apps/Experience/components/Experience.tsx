@@ -7,8 +7,18 @@ import Link from 'common/Link';
 import Break from 'common/Break';
 import BodyText from 'common/BodyText';
 
+import bitbuyLogo from '../assets/bitbuyLogo.png';
+import tabloLogo from '../assets/tabloLogo.png';
 import loopioLogo from '../assets/loopioLogo.png';
 import aerialPhotoworksLogo from '../assets/aerialPhotoworksLogo.png';
+
+const BitbuyImage = styled.img`
+    width: 28vh;
+`;
+
+const TabloImage = styled.img`
+    width: 25vh;
+`;
 
 const LoopioImage = styled.img`
     width: 27vh;
@@ -26,21 +36,80 @@ interface Props {
     isInitialTransition: boolean;
 }
 
-const LoopioContent = (
+const BitbuyContent = (
     <div>
-        <h3 className="header">Full Stack Software Developer</h3>
-        <h4 className="subheader">
-            <Link href="https://www.loopio.com">Loopio Inc.</Link> | RFP Management Software
-        </h4>
-        <h5 className="subheader">05/2018 - 08/2019, 06/2021 - Current</h5>
+        <h3 className="header">
+            <Link href="https://www.bitbuy.ca">Bitbuy Technologies Inc.</Link> | Crypto Exchange
+        </h3>
+        <h4 className="subheader">Software Developer | Treasury, Risk, Collateral & Marketplace Systems Team</h4>
+        <h5 className="subheader">08/2022 - Current</h5>
+        <Break />
+        <h4 className="subheader">Mobile Engineer | Application & Productivity Teams</h4>
+        <h5 className="subheader">01/2022 - 08/2022</h5>
         <BodyText>
             <ul>
                 <li>
-                    Refactored Loopio build process to allow support for Typescript. Introduced Typescript to the engineering team through a Lunch & Learn presentation.
+                    Implemented EAS (Expo Application Services) into the mobile build process. Documented entire process
+                    to help other engineering teams across the business migrate to EAS.
+                </li>
+                <li>Reduced Web build time by ~25% (8 minutes).</li>
+                <li>
+                    Increased both Web & Mobile releases to a minimum of 1 release per week by creating and modifying a
+                    variety of Github workflows, which included Slack notifications, to improve CI/CD pipeline.
                 </li>
                 <li>
-                    Developed a new PDF import system for Loopio’s Project Import feature.
+                    Streamlined coin implementation process on Mobile. This involved code refactoring, documenting the
+                    overall process, and improving communication on coin requirements.
                 </li>
+                <li>Utilized: React Native, React, Github Actions, Typescript, Gatsby, HTML, CSS.</li>
+            </ul>
+        </BodyText>
+    </div>
+);
+
+const TabloContent = (
+    <div>
+        <h3 className="header">
+            <Link href="https://www.tablocreative.com">Tablo Creative</Link> | Boutique Consulting Firm
+        </h3>
+        <h4 className="subheader">Web Developer</h4>
+        <h5 className="subheader">11/2021 - Current</h5>
+        <BodyText>
+            <ul>
+                <li>
+                    Implemented new design system for <Link href="https://www.metabase.com">metabase.com.</Link>{' '}
+                    Complete overhaul of the entire site.
+                </li>
+                <li>
+                    Implemented internal Shopify Monogram app for{' '}
+                    <Link href="https://www.trouvailleonline.com">trouvailleonline.com.</Link> Utilized Glitch for the backend. Try
+                    it by adding an item from <Link href="https://trouvailleonline.com/collections/monogram">here</Link>
+                    , and navigating to the cart! Click “Add Complimentary Monogram” within the cart to view.
+                </li>
+                <li>
+                    Implemented custom discount indicator for <Link href="https://www.futz.com">futz.com</Link> on their
+                    collections pages for their Shopify store.
+                </li>
+                <li>Utilized: Jekyll, Liquid, JavaScript, HTML, CSS, NodeJS, Glitch, Webhooks.</li>
+            </ul>
+        </BodyText>
+    </div>
+);
+
+const LoopioContent = (
+    <div>
+        <h3 className="header">
+            <Link href="https://www.loopio.com">Loopio Inc.</Link> | RFP Management Software
+        </h3>
+        <h4 className="subheader">Full Stack Software Developer | Integrations & Projects Teams</h4>
+        <h5 className="subheader">05/2018 - 08/2019, 06/2021 - 01/2022</h5>
+        <BodyText>
+            <ul>
+                <li>
+                    Refactored Loopio build process to allow support for Typescript. Introduced Typescript to the
+                    engineering team through a Lunch & Learn presentation.
+                </li>
+                <li>Developed a new PDF import system for Loopio’s Project Import feature.</li>
                 <li>
                     Developed a Chrome Extension to assist with importing content into the customer library from
                     anywhere on the web. Installations surpassed competitor solution within 5 days of being on the
@@ -53,7 +122,7 @@ const LoopioContent = (
                     testing standards for the Engineering Team.
                 </li>
                 <li>Developed a bulk user import solution for large enterprise customers.</li>
-                <li>Utilized: JavaScript, React, Redux, HTML/CSS, PHP, MySQL, Git</li>
+                <li>Utilized: JavaScript, React, Redux, HTML/CSS, PHP, MySQL, Git.</li>
             </ul>
             Loopio is a Knowledge Management platform that assists in managing the RFP process and is based in Toronto,
             Canada. While at Loopio, I was able to work on meaningful features that made an impact on the business. The
@@ -85,8 +154,8 @@ const StyledIframe = styled.iframe`
 
 const AerialPhotoworksContent = (
     <div>
-        <h3 className="header">Owner</h3>
-        <h4 className="subheader">Aerial PhotoWorks | Aerial Photography Service</h4>
+        <h3 className="header">Aerial PhotoWorks | Aerial Photography Service</h3>
+        <h4 className="subheader">Owner</h4>
         <h5 className="subheader">05/2014 - 08/2018</h5>
         <BodyText>
             <Break numBreaks={1} />
@@ -130,6 +199,22 @@ const Experience: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDo
                 id="experience"
                 title="Experience"
                 cards={[
+                    {
+                        title: 'Software Developer',
+                        subTitle: 'Crypto Exchange',
+                        ImageComponent: <BitbuyImage src={bitbuyLogo} alt="bitbuy-logo" />,
+                        imageBackgroundColor: '#DFD9CD',
+                        imageTextColor: 'black',
+                        content: BitbuyContent,
+                    },
+                    {
+                        title: 'Web Developer',
+                        subTitle: 'Boutique Consulting Firm',
+                        ImageComponent: <TabloImage src={tabloLogo} alt="tablo-creative-logo" />,
+                        imageBackgroundColor: '#092D27',
+                        imageTextColor: 'white',
+                        content: TabloContent,
+                    },
                     {
                         title: 'Full Stack Software Developer',
                         subTitle: 'RFP Management Software',

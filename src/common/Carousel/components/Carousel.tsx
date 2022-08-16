@@ -97,8 +97,8 @@ class Carousel extends React.Component<Props, State> {
             },
         },
         coverflowEffect: {
-            rotate: 50,
-            stretch: 0,
+            rotate: 25,
+            stretch: -50,
             depth: 100,
             modifier: 1,
             slideShadows: false,
