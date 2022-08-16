@@ -41,10 +41,10 @@ const BitbuyContent = (
         <h3 className="header">
             <Link href="https://www.bitbuy.ca">Bitbuy Technologies Inc.</Link> | Crypto Exchange
         </h3>
-        <h4 className="subheader">Software Developer | Treasury, Risk, Collateral & Marketplace Systems Team</h4>
+        <h4 className="subheader">Software Developer | Treasury, Risk, Collateral & Marketplace Systems</h4>
         <h5 className="subheader">08/2022 - Current</h5>
         <Break />
-        <h4 className="subheader">Mobile Engineer | Application & Productivity Teams</h4>
+        <h4 className="subheader">Mobile Engineer | Application & Productivity</h4>
         <h5 className="subheader">01/2022 - 08/2022</h5>
         <BodyText>
             <ul>
@@ -101,7 +101,7 @@ const LoopioContent = (
         <h3 className="header">
             <Link href="https://www.loopio.com">Loopio Inc.</Link> | RFP Management Software
         </h3>
-        <h4 className="subheader">Full Stack Software Developer | Integrations & Projects Teams</h4>
+        <h4 className="subheader">Full Stack Software Developer | Integrations & Projects</h4>
         <h5 className="subheader">05/2018 - 08/2019, 06/2021 - 01/2022</h5>
         <BodyText>
             <ul>
