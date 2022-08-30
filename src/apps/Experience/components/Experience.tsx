@@ -70,7 +70,7 @@ const BitbuyContent = (
 const TabloContent = (
     <div>
         <h3 className="header">
-            <Link href="https://www.tablocreative.com">Tablo Creative</Link> | Boutique Consulting Firm
+            <Link href="https://www.tablocreative.com">Tablo Creative</Link> | Boutique Consulting Agency
         </h3>
         <h4 className="subheader">Web Developer</h4>
         <h5 className="subheader">11/2021 - Current</h5>
@@ -209,7 +209,7 @@ const Experience: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDo
                     },
                     {
                         title: 'Web Developer',
-                        subTitle: 'Boutique Consulting Firm',
+                        subTitle: 'Boutique Consulting Agency',
                         ImageComponent: <TabloImage src={tabloLogo} alt="tablo-creative-logo" />,
                         imageBackgroundColor: '#092D27',
                         imageTextColor: 'white',
