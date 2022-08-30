@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.e6081131.chunk.css",
-    "main.js": "/static/js/main.94042e27.chunk.js",
-    "main.js.map": "/static/js/main.94042e27.chunk.js.map",
+    "main.js": "/static/js/main.55e95c52.chunk.js",
+    "main.js.map": "/static/js/main.55e95c52.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.2945f91f.js",
     "runtime-main.js.map": "/static/js/runtime-main.2945f91f.js.map",
     "static/css/2.caac2a96.chunk.css": "/static/css/2.caac2a96.chunk.css",
@@ -14,7 +14,7 @@
     "static/css/2.caac2a96.chunk.css.map": "/static/css/2.caac2a96.chunk.css.map",
     "static/css/main.e6081131.chunk.css.map": "/static/css/main.e6081131.chunk.css.map",
     "static/js/2.16d69692.chunk.js.LICENSE.txt": "/static/js/2.16d69692.chunk.js.LICENSE.txt",
-    "static/media/LUCAS GISMONDI - RESUME.eafb4931.pdf": "/static/media/LUCAS GISMONDI - RESUME.eafb4931.pdf",
+    "static/media/LUCAS GISMONDI - RESUME.4c5d653e.pdf": "/static/media/LUCAS GISMONDI - RESUME.4c5d653e.pdf",
     "static/media/UofTLogo.0ebba934.png": "/static/media/UofTLogo.0ebba934.png",
     "static/media/aerialPhotoworksLogo.2515735e.png": "/static/media/aerialPhotoworksLogo.2515735e.png",
     "static/media/loopioBlogCover.cf6978d0.jpg": "/static/media/loopioBlogCover.cf6978d0.jpg",
@@ -28,6 +28,6 @@
     "static/css/2.caac2a96.chunk.css",
     "static/js/2.16d69692.chunk.js",
     "static/css/main.e6081131.chunk.css",
-    "static/js/main.94042e27.chunk.js"
+    "static/js/main.55e95c52.chunk.js"
   ]
 }
