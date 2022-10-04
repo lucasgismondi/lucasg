@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.e6081131.chunk.css",
-    "main.js": "/static/js/main.55e95c52.chunk.js",
-    "main.js.map": "/static/js/main.55e95c52.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.2945f91f.js",
-    "runtime-main.js.map": "/static/js/runtime-main.2945f91f.js.map",
+    "main.js": "/static/js/main.537a4f74.chunk.js",
+    "main.js.map": "/static/js/main.537a4f74.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.66e01e1c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.66e01e1c.js.map",
     "static/css/2.caac2a96.chunk.css": "/static/css/2.caac2a96.chunk.css",
-    "static/js/2.16d69692.chunk.js": "/static/js/2.16d69692.chunk.js",
-    "static/js/2.16d69692.chunk.js.map": "/static/js/2.16d69692.chunk.js.map",
-    "static/js/3.8311e99b.chunk.js": "/static/js/3.8311e99b.chunk.js",
-    "static/js/3.8311e99b.chunk.js.map": "/static/js/3.8311e99b.chunk.js.map",
+    "static/js/2.b52eb861.chunk.js": "/static/js/2.b52eb861.chunk.js",
+    "static/js/2.b52eb861.chunk.js.map": "/static/js/2.b52eb861.chunk.js.map",
+    "static/js/3.168c94b8.chunk.js": "/static/js/3.168c94b8.chunk.js",
+    "static/js/3.168c94b8.chunk.js.map": "/static/js/3.168c94b8.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.caac2a96.chunk.css.map": "/static/css/2.caac2a96.chunk.css.map",
     "static/css/main.e6081131.chunk.css.map": "/static/css/main.e6081131.chunk.css.map",
-    "static/js/2.16d69692.chunk.js.LICENSE.txt": "/static/js/2.16d69692.chunk.js.LICENSE.txt",
+    "static/js/2.b52eb861.chunk.js.LICENSE.txt": "/static/js/2.b52eb861.chunk.js.LICENSE.txt",
     "static/media/LUCAS GISMONDI - RESUME.4c5d653e.pdf": "/static/media/LUCAS GISMONDI - RESUME.4c5d653e.pdf",
     "static/media/UofTLogo.0ebba934.png": "/static/media/UofTLogo.0ebba934.png",
     "static/media/aerialPhotoworksLogo.2515735e.png": "/static/media/aerialPhotoworksLogo.2515735e.png",
@@ -24,10 +24,10 @@
     "static/media/tabloLogo.2df3ef43.png": "/static/media/tabloLogo.2df3ef43.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.2945f91f.js",
+    "static/js/runtime-main.66e01e1c.js",
     "static/css/2.caac2a96.chunk.css",
-    "static/js/2.16d69692.chunk.js",
+    "static/js/2.b52eb861.chunk.js",
     "static/css/main.e6081131.chunk.css",
-    "static/js/main.55e95c52.chunk.js"
+    "static/js/main.537a4f74.chunk.js"
   ]
 }
