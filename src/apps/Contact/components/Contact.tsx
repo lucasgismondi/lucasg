@@ -6,7 +6,6 @@ import Link from 'common/Link';
 
 import GitHub from '@material-ui/icons/GitHub';
 import LinkedIn from '@material-ui/icons/LinkedIn';
-import Instagram from '@material-ui/icons/Instagram';
 
 const Wrapper = styled.div`
     height: 100%;
@@ -67,9 +66,6 @@ const Contact: React.FC<Props> = ({ onCardToggle, showContents, isScrollingDown,
                         </IconLink>
                         <IconLink href="https://www.linkedin.com/in/lucasgismondi/" textColor="white">
                             <LinkedIn style={{ fontSize: '4em' }} />
-                        </IconLink>
-                        <IconLink href="https://www.instagram.com/lucas.gismondi/" textColor="white">
-                            <Instagram style={{ fontSize: '3.7em' }} />
                         </IconLink>
                     </IconWrapper>
                 </ContactWrapper>

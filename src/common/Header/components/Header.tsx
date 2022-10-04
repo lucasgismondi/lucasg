@@ -4,7 +4,6 @@ import EventEmitter from 'eventemitter3';
 
 import GitHub from '@material-ui/icons/GitHub';
 import LinkedIn from '@material-ui/icons/LinkedIn';
-import Instagram from '@material-ui/icons/Instagram';
 
 import Menu from './Menu';
 import Link from 'common/Link';
@@ -64,9 +63,6 @@ const Header: React.FC<Props> = ({ pageNames, scrollToIndex }) => {
                     </IconLink>
                     <IconLink href="https://www.linkedin.com/in/lucasgismondi/" textColor="white">
                         <LinkedIn style={{ fontSize: '1.6em' }} />
-                    </IconLink>
-                    <IconLink href="https://www.instagram.com/lucas.gismondi/" textColor="white">
-                        <Instagram />
                     </IconLink>
                     <Menu
                         pageNames={pageNames}
